@@ -53,7 +53,17 @@
 			"tagline": "Toujours à la recherche de LA photo",
 			"price": 300,
 			"portrait": "MarcelNikolic.jpg"
+		},
+		{
+			"name": "Julie Souvandy",
+			"id": 178,
+			"city": "Paris",
+			"country": "France",
+			"tagline": "Pourquoi pas",
+			"price": 150,
+			"portrait": "MarcelNikolic.jpg"
 		}
+		
 	],
 	"media": [
 		{
