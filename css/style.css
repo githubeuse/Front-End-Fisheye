@@ -63,3 +63,20 @@ h1 {
     border-radius: 50%;
     object-fit: cover;
 }
+
+@media screen and (max-width: 1280px) {
+    .photographer_section {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .photographer_section article img {
+        height: 300px;
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .photographer_section {
+        grid-template-columns: 1fr;
+    }
+}
