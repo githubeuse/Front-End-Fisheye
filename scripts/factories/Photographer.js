@@ -38,4 +38,4 @@ class Photographer{
     }
 
 }
-console.log(photographers);
+console.log(Photographer);

@@ -14,7 +14,6 @@ function photographerTemplate(data) {
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
         img.setAttribute("alt", "Photo de " + name);
-        img.setAttribute("role", "img");
         link.appendChild(img);
         
 
