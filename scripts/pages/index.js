@@ -1,6 +1,10 @@
+    
     async function getPhotographers() {
+        // 1/ crée une constante response qui va chercher les datas dans le fichier json
         const response = await fetch('/data/photographers.json');
+        // 2/ Crée une constante photographers qui va passer la response en format json
         const photographers = await response.json();
+        // 3/ retourne la response au format json
         return photographers;
 
         // Ceci est un exemple de données pour avoir un affichage de photographes de test dès le démarrage du projet, 

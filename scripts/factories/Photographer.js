@@ -1,7 +1,7 @@
 class Photographer{
     constructor(photographers) {
         this._name = photographers.name 
-        this._id = photograprahers.id 
+        this._id = photographers.id 
         this._city = photographers.city 
         this._country = photographers.country 
         this._tagline = photographers.tagline
