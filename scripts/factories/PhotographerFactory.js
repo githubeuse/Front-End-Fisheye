@@ -1,10 +1,13 @@
+//Factory
+
 class Photographer{
     constructor(photographers) {
         this._name = photographers.name 
         this._id = photographers.id 
         this._city = photographers.city 
         this._country = photographers.country 
-        this._tagline = photographers.tagline
+        this._tagline = photographers.tagli
+        ne
         this._price = photographers.price 
         this._portrait = photographers.portrait
     }
@@ -36,6 +39,4 @@ class Photographer{
     get portrait(){
         return this._portrait
     }
-
 }
-console.log(Photographer);

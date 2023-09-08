@@ -1,3 +1,4 @@
+//Pages 
     
     async function getPhotographers() {
         // 1/ crée une constante response qui va chercher les datas dans le fichier json

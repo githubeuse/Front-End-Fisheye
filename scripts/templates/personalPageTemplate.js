@@ -8,10 +8,6 @@ function photographerTemplate(data) {
         const article = document.createElement( 'article' );
         article.setAttribute("class", "photographer_presentation");
 
-        //const link = document.createElement('a');
-        //link.setAttribute('title', 'Lien vers la fiche de ' + name);
-        //link.setAttribute('href', 'photographer.html?id='+ id);
-        
         //div 1
         const div1 = document.createElement( 'div');
         article.appendChild(div1);
@@ -46,11 +42,11 @@ function photographerTemplate(data) {
         pTagline.textContent = tagline;
         div1.appendChild(pTagline);
 
+        //me contacter
         const contactButton = document.querySelector(".contact_button");
         contactButton.style.display = "block";
         div2.appendChild(contactButton);
         
-
         //prix
         //const spanPrice = document.createElement ( 'span' );
         //spanPrice.textContent = price +"€/jour";
@@ -58,18 +54,33 @@ function photographerTemplate(data) {
         //image
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
-        img.setAttribute("alt", "Photo de " + name);
+        img.setAttribute("alt", name);
         img.setAttribute("class", "profile_picture");
-        article.appendChild(img);
-
-        //article.appendChild(h1);
-
-        //article.appendChild(spanCity);
-        //article.appendChild(spanCountry); 
-        //article.appendChild(spanTagline);
-        //article.appendChild(spanPrice);
-        article.appendChild(img);
+        div3.appendChild(img);
         return (article);
     }
-    return { name, picture, city, country, tagline, price, getUserCardDOM };
+    return { name, picture, city, country, tagline, price, id, getUserCardDOM };
 }
+/*
+function mediasTemplate(data) {
+    const { id, photographerId, title, image, likes, date, price } = data;
+
+    const media = `assets/image/${image}`;
+
+    function getMediaCardDOM(){
+        const article = document.createElement( 'article' );
+
+        const img = document.createElement( 'img');
+        img.setAttribute("src", image);
+        article.appendChild(img);
+
+        const pTitle = document.createElement( 'p' );
+        pTitle.textContent = title;
+        article.appendChild(pTitle);
+
+        article.appendChild(media);
+
+    }
+
+    return  { id, photographerId, title, image, likes, date, price };
+}*/

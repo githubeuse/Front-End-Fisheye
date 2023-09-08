@@ -2,10 +2,20 @@
     display: none;
 }
 
+
+#main{
+    margin: 0 100px;
+}
+
 .photograph-header {
     background-color: #FAFAFA;
-    margin: 0 100px;
     padding: 50px 30px;
+}
+
+
+.photographer-image,
+.photographer-video{
+    width: 200px;
 }
 
 .contact_button {

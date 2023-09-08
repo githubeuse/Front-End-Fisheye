@@ -12,7 +12,7 @@
 <body>
   <!--Entête-->
   <header role="banner">
-    <a href="index.html">
+    <a href="index.html" aria-label="Retourner sur la page d'accueil">
       <img src="assets/images/logo.png" class="logo" alt="Fisheye Home Page - Page d'accueil" />
     </a>
   </header>
@@ -23,11 +23,27 @@
   <!--Présentation du photographe-->
   <main id="main">
     <div class="photograph-header">
-      <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+      <button class="contact_button" onclick="displayModal()" aria-label="Contact Me">Contactez-moi</button>
     </div>
+    <!--Zone filtre-->
+    <section class="filter">
+      <span>Trier par</span>
+    </section>
   </main>
 
 
+
+
+
+
+  <!--Pour afficher les réalisations-->
+  <section class="realisations">
+
+  </section>
+
+  <!--Bottom-bar avec nombre de likes et tarif-->
+  <section class="bottom-bar">
+  </section>
 
   <!--Modale-->
   <div id="contact_modal">
@@ -49,12 +65,15 @@
   <!--JS Utils-->
   <script src="/scripts/utils/contactForm.js"></script>
 
-
   <!--JS Templates-->
-  <script src="/scripts/templates/personalPage.js"></script>
+  <script src="/scripts/templates/personalPageTemplate.js"></script>
+  <script src="/scripts/templates/mediaTemplate.js"></script>
 
   <!--JS Pages-->
-  <script src="/scripts/pages/photographer.js"></script>
+  <script src="/scripts/pages/photographerPage.js"></script>
+
+    <!--JS Factories-->
+  <script src="/scripts/factories/MediaFactory.js"></script>
 
 
 
