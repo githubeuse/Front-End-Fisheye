@@ -86,8 +86,9 @@ display: flex;
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
-    max-width: 2000px;
+    max-width: 2500px;
     justify-content: center;
+    margin-top: 20px;
 
 
 
@@ -100,8 +101,8 @@ display: flex;
 
 .photographer-image,
 .photographer-video {
-    height: 400px;
-    width: 400px;
+    height: 40vh;
+    width: 450px;
     object-fit: cover;
     /*height: 250px;
     width: 80%;

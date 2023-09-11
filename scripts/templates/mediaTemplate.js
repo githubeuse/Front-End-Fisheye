@@ -16,7 +16,9 @@ function mediaTemplate(data) {
             if(image) {
             const photographerImage = document.createElement ('img');
             photographerImage.setAttribute("src", photographerMedias);
-            photographerImage.setAttribute("class", "photographer-image")
+            photographerImage.setAttribute("class", "photographer-image");
+            photographerImage.setAttribute("alt", title);
+            photographerImage.setAttribute("alt", "Image de " + title);
             article.appendChild(photographerImage);
             } else if (video) {
             const photographerVideo = document.createElement ('video');
@@ -32,7 +34,7 @@ function mediaTemplate(data) {
  
         const imageTitle = document.createElement ( 'p' );
         imageTitle.textContent = title;
-        console.log("title:", title);
+        imageTitle.setAttribute("focusable", false);
         article.appendChild(imageTitle);
 
 
