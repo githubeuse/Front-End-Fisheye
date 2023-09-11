@@ -3,9 +3,6 @@
 }
 
 
-#main{
-    margin: 0 100px;
-}
 
 .photograph-header {
     background-color: #FAFAFA;
@@ -13,10 +10,7 @@
 }
 
 
-.photographer-image,
-.photographer-video{
-    width: 200px;
-}
+
 
 .contact_button {
     font-size: 20px;

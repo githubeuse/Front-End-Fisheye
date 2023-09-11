@@ -7,11 +7,10 @@ function mediaTemplate(data) {
     const photographerMedias = image ? `assets/images/${image}` : `assets/images/${video}`;
 
     function getMediaCardDOM(){
-
+        
         const article = document.createElement ( 'article' );
-        
+        article.setAttribute('class', 'article-media');
 
-        
 
         function imgOrVideo (photographerMedias) {
             if(image) {
