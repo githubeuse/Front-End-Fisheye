@@ -61,26 +61,4 @@ function photographerTemplate(data) {
     }
     return { name, picture, city, country, tagline, price, id, getUserCardDOM };
 }
-/*
-function mediasTemplate(data) {
-    const { id, photographerId, title, image, likes, date, price } = data;
 
-    const media = `assets/image/${image}`;
-
-    function getMediaCardDOM(){
-        const article = document.createElement( 'article' );
-
-        const img = document.createElement( 'img');
-        img.setAttribute("src", image);
-        article.appendChild(img);
-
-        const pTitle = document.createElement( 'p' );
-        pTitle.textContent = title;
-        article.appendChild(pTitle);
-
-        article.appendChild(media);
-
-    }
-
-    return  { id, photographerId, title, image, likes, date, price };
-}*/
