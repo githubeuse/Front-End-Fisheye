@@ -24,19 +24,19 @@ function getId() {
 const id = getId();
 
 
-//récupère les datas photographers du ficher json
+//récupère les datas PHOTOGRAPHER du ficher json
 async function getPhotographerDatas(id) {
     const response = await fetch('/data/photographers.json');
     const data = await response.json();
     const photographers = data.photographers;
     //Filtre les photographes en fonction de l'id
     const photographer = photographers.find(photographer => photographer.id === parseInt(id));
-    console.log(`photographer = ` + photographer);
+    console.log(`photographer = ` + photographer.price);
     // 3/ retourne la response au format json
     return photographer;
 
 }
-//affiche les informations
+//affiche les informations PHOTOGRAPHER
 async function displayPhotographerDatas(photographer) {
     const photographersSection = document.querySelector(".photograph-header");
 
@@ -45,7 +45,7 @@ async function displayPhotographerDatas(photographer) {
     photographersSection.appendChild(userCardDOM);
 }
 
-//récupère les datas media du fichier json
+//récupère les datas MEDIA du fichier json
 async function getPhotographerMedias(id) {
     const response = await fetch('/data/photographers.json');
     const data = await response.json();
@@ -64,7 +64,7 @@ async function getPhotographerMedias(id) {
 }
 
 
-
+//affiche les informations MEDIA
 async function displayPhotographerMedias(media) {
     const mediasSection = document.querySelector(".realisations");
     console.log("media length : " + media.length);
@@ -79,28 +79,6 @@ async function displayPhotographerMedias(media) {
 
 }
 
-//récupère les datas du prix
-async function getPhotographerPrice(id) {
-    const response = await fetch('/data/photographers.json');
-    const data = await response.json();
-    const photographers = data.photographers;
-    const photographerPrice = photographers.find(item => item.price === parseInt(id));
-    console.log("price", photographerPrice);
-    return photographerPrice;
-}
-
-
-
-//affiche les datas du prix
-async function displayPhotographerPrice(photographerPrice) {
-    const bottomBar = document.querySelector(".bottom-bar");
-
-    const priceModel = photographerPriceTemplate(photographerPrice);
-    const priceCardDom = priceModel();
-    bottomBar.appendChild(priceCardDom);
-}
-
-
 async function init() {
     // Récupère les datas du photographe
     const photographer = await getPhotographerDatas(id);
@@ -113,9 +91,3 @@ async function init2() {
     displayPhotographerMedias(media);
 }
 init2();
-
-async function init3() {
-    const price = await getPhotographerPrice(id);
-    displayPhotographerPrice(price);
-}
-init3();

@@ -57,6 +57,10 @@ function photographerTemplate(data) {
         img.setAttribute("alt", name);
         img.setAttribute("class", "profile_picture");
         div3.appendChild(img);
+
+        const bottomBar = document.querySelector("#bottom-bar");
+        bottomBar.innerText = price;
+
         return (article);
     }
     return { name, picture, city, country, tagline, price, id, getUserCardDOM };

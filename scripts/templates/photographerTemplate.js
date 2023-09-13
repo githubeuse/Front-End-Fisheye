@@ -44,15 +44,3 @@ function photographerTemplate(data) {
     }
     return { name, picture, city, country, tagline, price, getUserCardDOM };
 }
-
-//template
-function photographerPriceTemplate(data) {
-    const { price } = data;
-        function getPriceCardDOM() {
-            const priceElement = document.createElement('p');
-            priceElement.innerText = price;
-            return priceElement;
-        }
-    return getPriceCardDOM();
-}
-

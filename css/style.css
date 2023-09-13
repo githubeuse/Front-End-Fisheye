@@ -76,18 +76,17 @@ h1 {
         margin-top: 100px;*/
 }
 
-/*.article-media {
-display: flex;
+.article-media {
+    width: 30%;
+    /*display: flex;
     flex-direction: column;
-    align-items: center;
-}*/
+    align-items: center;*/
+}
 
 .realisations {
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
-    max-width: 2500px;
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 20px;
 
 
@@ -101,12 +100,9 @@ display: flex;
 
 .photographer-image,
 .photographer-video {
-    height: 40vh;
-    width: 450px;
+    height: 450px;
+    width: 100%;
     object-fit: cover;
-    /*height: 250px;
-    width: 80%;
-    object-fit: cover;*/
 }
 
 .bottom-line {
@@ -126,9 +122,10 @@ display: flex;
 @media screen and (max-width: 1280px) {
 
     .profile_picture {
-        width:150px;
+        width: 150px;
         height: 150px;
     }
+
     .photographer_section {
         grid-template-columns: 1fr 1fr;
     }
@@ -138,7 +135,7 @@ display: flex;
         width: 300px;
     }
 
-    .contact_button{
+    .contact_button {
         font-size: 15px;
         width: 150px;
     }
@@ -148,22 +145,26 @@ display: flex;
         gap: 20px;
     }
 
+    .article-media {
+        width: 30%;
+    }
+
     .photographer-image,
     .photographer-video {
-        height: 350px;
-        width: 350px;
+        height: 250px;
     }
+
 }
 
 @media screen and (max-width: 768px) {
-    body{
+    body {
         margin: 20px;
     }
 
     .photograph-header {
         padding: 10px 10px;
     }
-    
+
 
     .photographer_section {
         grid-template-columns: 1fr;
@@ -174,14 +175,17 @@ display: flex;
         gap: 30px;
     }
 
-    .realisation {
-        max-width: 768px;
+    .realisations {
         gap: 20px;
+    }
+
+    .article-media{
+        width: 45%;
     }
 
     .photographer-image,
     .photographer-video {
-        height: 250px;
-        width: 250px;
+        height: 300px;
+
     }
 }
