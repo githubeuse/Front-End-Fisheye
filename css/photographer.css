@@ -9,7 +9,17 @@
     padding: 50px 30px;
 }
 
+.nameOfPhotographer{
+    color: #D3573C;
+    font-size: 3.2em;
+    margin-bottom: 20px;
+}
 
+.cityOfPhotographer,
+.countryOfPhotographer{
+    color:#901C1C;
+    font-size: 1.5em;
+}
 
 
 .contact_button {
@@ -77,4 +87,18 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+
+#bottomBarContainer {
+    width: 35%;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    background-color: #DB8876;
+    padding: 20px 30px;
+}
+
+#bottom-bar {
+    width: 100%;
+
 }

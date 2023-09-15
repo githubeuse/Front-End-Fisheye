@@ -25,16 +25,19 @@ function photographerTemplate(data) {
         const h1 = document.createElement( 'h1' );
         h1.textContent = name;
         h1.setAttribute("focusable", true);
+        h1.setAttribute("class", "nameOfPhotographer");
         div1.appendChild(h1);
 
         //ville
         const spanCity = document.createElement ( 'span' );
         spanCity.textContent = city + ", ";
+        spanCity.setAttribute("class", "cityOfPhotographer");
         div1.appendChild(spanCity);
 
         //pays
         const spanCountry = document.createElement ( 'span' );
         spanCountry.textContent = country;
+        spanCountry.setAttribute("class", "countryOfPhotographer");
         div1.appendChild(spanCountry);
 
         //phrase inspirante
@@ -58,8 +61,8 @@ function photographerTemplate(data) {
         img.setAttribute("class", "profile_picture");
         div3.appendChild(img);
 
-        const bottomBar = document.querySelector("#bottom-bar");
-        bottomBar.innerText = price;
+        const rightBottomBar = document.querySelector("#rightBottomBar");
+        rightBottomBar.innerText = price +"€ / jour ";
 
         return (article);
     }
