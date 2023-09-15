@@ -34,6 +34,11 @@
     border-radius: 5px;
     cursor: pointer;
 }
+.contact_modal {
+    position: fixed;
+    top: 0px;
+}
+
 
 .modal {
     border-radius: 5px;
