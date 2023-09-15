@@ -47,8 +47,9 @@ function photographerTemplate(data) {
 
         //me contacter
         const contactButton = document.querySelector(".contact_button");
-        contactButton.style.display = "block";
+        //contactButton.style.display = "block";
         div2.appendChild(contactButton);
+        contactButton.addEventListener("click", displayModal());
         
         //prix
         //const spanPrice = document.createElement ( 'span' );

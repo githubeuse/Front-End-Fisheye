@@ -9,15 +9,15 @@
     padding: 50px 30px;
 }
 
-.nameOfPhotographer{
+.nameOfPhotographer {
     color: #D3573C;
     font-size: 3.2em;
     margin-bottom: 20px;
 }
 
 .cityOfPhotographer,
-.countryOfPhotographer{
-    color:#901C1C;
+.countryOfPhotographer {
+    color: #901C1C;
     font-size: 1.5em;
 }
 
@@ -90,15 +90,24 @@ form input {
 }
 
 #bottomBarContainer {
-    width: 35%;
+    width: 20%;
     display: flex;
     justify-content: space-between;
     font-weight: 600;
     background-color: #DB8876;
     padding: 20px 30px;
+    position: fixed;
+    bottom: 0px;
+    right: 20px;
 }
 
 #bottom-bar {
     width: 100%;
 
+}
+
+@media screen and (max-width: 1280px) {
+    #bottomBarContainer {
+        width: 35%;
+    }
 }
