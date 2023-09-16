@@ -4,6 +4,7 @@ function displayModal() {
     modal.style.justifyContent= "center";
     modal.style.position = "fixed";
     modal.style.top = "450px" ;
+    modal.style.width = "50vw";
 
 }
 
