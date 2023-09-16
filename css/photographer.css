@@ -36,14 +36,13 @@
 }
 .contact_modal {
     position: fixed;
-    top: 0px;
+    width: 50vw;
 }
 
 
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
-    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;

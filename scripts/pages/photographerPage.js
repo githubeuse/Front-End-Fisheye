@@ -26,7 +26,7 @@ const id = getId();
 
 //récupère les datas PHOTOGRAPHER du ficher json
 async function getPhotographerDatas(id) {
-    const response = await fetch('/data/photographers.json');
+    const response = await fetch('data/photographers.json');
     const data = await response.json();
     const photographers = data.photographers;
     //Filtre les photographes en fonction de l'id
@@ -47,7 +47,7 @@ async function displayPhotographerDatas(photographer) {
 
 //récupère les datas MEDIA du fichier json
 async function getPhotographerMedias(id) {
-    const response = await fetch('/data/photographers.json');
+    const response = await fetch('data/photographers.json');
     const data = await response.json();
     const medias = data.media;
 
