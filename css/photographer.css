@@ -34,35 +34,43 @@
     border-radius: 5px;
     cursor: pointer;
 }
-.contact_modal {
-    position: fixed;
-}
-
 
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
     padding: 35px;
+    width: 50%;
     margin: auto;
 }
 
-.modal header {
-    justify-content: space-between;
+.modal-header {
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
 .modal header img {
     cursor: pointer;
 }
 
-.modal header h2 {
+.modal-header h2,
+.modal-header p{
     font-size: 64px;
-    font-weight: normal;
-    text-align: center;
+    font-weight: 600;
+    text-align: left;
+    margin: 0px;
+    margin-block-end: 0em;
+    margin-block-start: 0em;
+}
+
+
+.crossInModalWindow{
+    margin-top: 20px;
 }
 
 form {

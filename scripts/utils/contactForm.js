@@ -1,11 +1,10 @@
 function displayModal() {
     const modal = document.getElementById("contact_modal");
-	modal.style.display = "flex";
-    modal.style.justifyContent= "center";
-    modal.style.position = "fixed";
-    modal.style.top = "450px" ;
-    modal.style.width = "50vw";
-
+    modal.style.display ="flex";
+    modal.style.position= "fixed";
+    modal.style.width = "100%";
+    modal.style.top = "50px";
+    modal.style.left = "0px";
 }
 
 function closeModal() {
