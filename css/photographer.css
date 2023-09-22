@@ -23,7 +23,8 @@
 
 
 
-.contact_button {
+.contact_button,
+.bouton-envoyer {
     font-size: 20px;
     font-weight: bold;
     color: white;
@@ -41,7 +42,12 @@
 }
 
 .hidden{
-    display: none;
+    height: 1px;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: -10000px;
+    width: 1px;
 }
 
 .modal {
@@ -61,13 +67,15 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+    margin-bottom: 50px;
 }
+
 
 .modal header img {
     cursor: pointer;
 }
 
-.h2InModalWindow,
+.h1InModalWindow,
 .nameInModalWindow {
     font-size: 50px;
     font-weight: 600;
@@ -76,11 +84,11 @@
     margin-block-end: 0em;
     margin-block-start: 0em;
     color: #312E2E;
+
 }
-
-
 .crossInModalWindow {
     margin-top: 20px;
+    cursor: pointer;
 }
 
 form {
@@ -115,7 +123,7 @@ form textarea {
     height: 150px;
 }
 
-#message {
+.message {
     width: 100%;
     resize: none;
 }
@@ -146,8 +154,8 @@ form textarea {
         top: 10px;
     }
 
-    .modal-header h2,
-    .modal-header h3 {
+    .modal-header h1,
+    .modal-header h2 {
         font-size: 40px;
     }
 

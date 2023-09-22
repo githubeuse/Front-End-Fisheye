@@ -74,12 +74,12 @@ function photographerTemplate(data) {
         rightBottomBar.innerText = price + "€ / jour ";
 
         // ajout du nom dans la modale
-        const h2InModalWindow = document.querySelector('.h2InModalWindow');
+        const h1InModalWindow = document.querySelector('.h1InModalWindow');
 
-        const nameInModalWindow = document.createElement('h3');
+        const nameInModalWindow = document.createElement('h2');
         nameInModalWindow.innerText = name;
         nameInModalWindow.setAttribute("class", "nameInModalWindow");
-        h2InModalWindow.appendChild(nameInModalWindow);
+        h1InModalWindow.appendChild(nameInModalWindow);
         
         return (article);
     }
