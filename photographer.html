@@ -10,7 +10,7 @@
   <title>Fisheye - photographe </title>
 </head>
 
-<body>
+<body id="photographerBody">
   <!--Entête-->
   <header role="banner">
     <a href="index.html" aria-label="Retourner sur la page d'accueil">
@@ -30,37 +30,46 @@
     <section class="filter">
       <span>Trier par</span>
     </section>
+
+    <!--Pour afficher les réalisations-->
+    <section class="realisations">
+
+    </section>
+
+    <!--Bottom-bar avec nombre de likes et tarif-->
+    <section id="bottom-bar">
+      <div id="bottomBarContainer">
+        <div id="leftBottomBar">
+          <span class="totalOfLikes"></span>
+          <i class="fa-solid fa-heart"></i>
+        </div>
+        <div id="rightBottomBar">
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!--Pour afficher les réalisations-->
-  <section class="realisations">
 
-  </section>
-
-  <!--Bottom-bar avec nombre de likes et tarif-->
-  <section id="bottom-bar">
-    <div id="bottomBarContainer">
-      <div id="leftBottomBar">
-        <span class="totalOfLikes"></span>
-        <i class="fa-solid fa-heart"></i>
-      </div>
-      <div id="rightBottomBar">
-      </div>
-    </div>
-  </section>
 
   <!--Modale-->
-  <div id="contact_modal">
+  <div id="contact_modal" role="dialog" aria-hidden="true" aria-describedby="h2InModalWindow">
     <div class="modal">
       <div class="modal-header">
-        <h2 class="h2InModalWindow">Contactez-moi</h2>
+        <h2 id="h2InModalWindow" class="h2InModalWindow">Contactez-moi</h2>
         <img src="assets/icons/close.svg" class="crossInModalWindow" alt="Croix - Fermer la modale" aria-hidden="false"
           onclick="closeModal()" />
       </div>
-      <form>
+      <form method="post" action="traitement.php">
         <div>
-          <label>Prénom</label>
-          <input />
+          <label id ="First name" for="firstName">Prénom</label>
+          <input arial-labbeledby="First name" type="text" id="firstName" name="user_firstName"/>
+          <span id="First name" class="hidden" aria-hidden="false">Rentrez votre nom de famille</span>
+          <label id ="Last name" for="lastName">Nom</label>
+          <input aria-labelledby="Last name"  type="text" id="lastName" name="user_lastName" />
+          <label id ="Email" for="email">Email</label>
+          <input aria-labelledy="Email" type="email" id="email" name="user_email"/>
+          <label aria-labbeledby="Your message" for="message">Votre message</label>
+          <textarea id="Your message" name="user_message"></textarea>
         </div>
         <button class="contact_button">Envoyer</button>
       </form>

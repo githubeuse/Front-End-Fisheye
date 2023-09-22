@@ -76,8 +76,9 @@ function photographerTemplate(data) {
         // ajout du nom dans la modale
         const h2InModalWindow = document.querySelector('.h2InModalWindow');
 
-        const nameInModalWindow = document.createElement('p');
+        const nameInModalWindow = document.createElement('h3');
         nameInModalWindow.innerText = name;
+        nameInModalWindow.setAttribute("class", "nameInModalWindow");
         h2InModalWindow.appendChild(nameInModalWindow);
         
         return (article);
