@@ -91,3 +91,11 @@ async function init2() {
     displayPhotographerMedias(media);
 }
 init2();
+
+
+/*const photographerImages = document.querySelectorAll(".photographer-image");
+photographerImages.forEach((image) => {
+    image.addEventListener("click", function () {
+        console.log("hello");
+    });
+});*/

@@ -2,7 +2,46 @@
     display: none;
 }
 
+.carousel-container{
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}
 
+
+.carousel{
+    background-color: white;
+    border: black 1px solid;
+}
+
+#crossInCarouselHeader{
+    color: #901C1C;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.carousel-image-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.imageInCarousel {
+    width: 25vw;
+    height: 50vh;
+    object-fit: cover;
+}
+
+.titleInCarousel{
+    color: #901C1C;
+
+}
 
 .photograph-header {
     background-color: #FAFAFA;

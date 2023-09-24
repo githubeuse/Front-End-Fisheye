@@ -55,31 +55,31 @@
   <div id="contact_modal" role="dialog" aria-hidden="true" aria-labelledby="h2InModalWindow">
     <div class="modal">
       <header class="modal-header">
-          <h1 id="h1InModalWindow" class="h1InModalWindow">Contactez-moi</h1>
-        <img src="assets/icons/close.svg" class="crossInModalWindow" alt="Croix - Fermer la modale" aria-hidden="false" />
+        <h1 id="h1InModalWindow" class="h1InModalWindow">Contactez-moi</h1>
+        <img src="assets/icons/close.svg" class="crossInModalWindow" alt="Croix - Fermer la modale"
+          aria-hidden="false" />
       </header>
       <form id="formulaire">
         <div>
           <label for="prenom">Prénom</label>
-          <input type="text" id="prenom" name="prenom" aria-labbeledby="prenom"
-            aria-describedby="prenom-description" placeholder="Par exemple : Enzo"/>
+          <input type="text" id="prenom" name="prenom" aria-labbeledby="prenom" aria-describedby="prenom-description"
+            placeholder="Par exemple : Enzo" />
           <span id="prenom-description" class="hidden" aria-hidden="false">Rentrez votre prénom</span>
 
           <label for="nom">Nom</label>
-          <input type="text" id="nom" name="nom" aria-labelledby="nom"
-            aria-describedby="nom-description" placeholder="Par exemple : Dupont" />
+          <input type="text" id="nom" name="nom" aria-labelledby="nom" aria-describedby="nom-description"
+            placeholder="Par exemple : Dupont" />
           <span id="nom-description" class="hidden" aria-hidden="false">Rentrez votre nom de famille</span>
 
 
-          <label  for="email">Email</label>
-          <input type="email" id="email" name="user_email" aria-labelledy="email"
-            aria-describedby="email-description" placeholder="Par exemple : enzo@dupont.fr"/>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="user_email" aria-labelledy="email" aria-describedby="email-description"
+            placeholder="Par exemple : enzo@dupont.fr" />
           <span id="email-description" class="hidden" aria-hidden="false">Rentrez votre email</span>
 
 
           <label aria-labbeledby="message" for="message">Votre message</label>
-          <textarea id="message" class="message" name="message"
-            aria-describedby="message-description"></textarea>
+          <textarea id="message" class="message" name="message" aria-describedby="message-description"></textarea>
           <span id="message-description" class="hidden" aria-hidden="false">Rentrez votre message</span>
 
 
@@ -91,6 +91,18 @@
       </form>
     </div>
   </div>
+
+  <!--Carrousel-->
+  <div class="carousel-container" role="dialog">
+
+    <div class="carousel">
+      <div class="carousel-header">        
+      </div>
+      <div class="carousel-image-container"></div>
+    
+    </div>
+  </div>
+
 
   <!--JS Utils-->
   <script src="scripts/utils/contactForm.js"></script>

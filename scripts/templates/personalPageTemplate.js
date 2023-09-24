@@ -94,3 +94,49 @@ function photographerTemplate(data) {
         getUserCardDOM
     };
 }
+
+
+
+const parentStatic = document.querySelector(".realisations");
+parentStatic.addEventListener("click", function (event) {
+    // Vérifiez si l'élément cliqué a la classe .photographer-image
+    if (event.target.classList.contains("photographer-image")) {
+        showCarousel();
+    }
+});
+
+function showCarousel() {
+    console.log("hello");
+    /*const carouselContainer = document.querySelector(".carousel-container");
+    carouselContainer.style.display = "flex";
+    carouselContainer.style.position = "fixed";
+    carouselContainer.style.top= "0px";
+    carouselContainer.style.left= "0px";
+    carouselContainer.setAttribute("aria-hidden", "false");
+
+    const carousel = document.querySelector(".carousel");
+    carousel.style.margin ="auto";
+    
+
+    const photographerBody = document.querySelector("#photographerBody");
+    photographerBody.setAttribute("aria-hidden", "true");
+    photographerBody.style.overflow = "hidden";*/
+}
+
+function closeCarousel(){
+    const carouselContainer = document.querySelector(".carousel-container");
+    carouselContainer.style.display = "none";
+    const photographerBody = document.querySelector("#photographerBody");
+    photographerBody.style.overflow= "auto";
+}
+
+//Mise en place touche escape pour fermer la modale
+document.addEventListener('keydown', function (esc) {
+    const key = esc.key;
+    const carouselContainer = document.querySelector(".carousel-container");
+    if (carouselContainer.getAttribute('aria-hidden') === 'false' && key === 'Escape') {
+        closeCarousel();
+    }
+})
+
+
