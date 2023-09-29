@@ -28,29 +28,27 @@ function mediaTemplate(data) {
                 photographerImage.setAttribute("class", "photographer-image");
                 photographerImage.setAttribute("alt", title);
                 photographerImage.setAttribute("alt", "Image de " + title);
-                photographerImage.style.cursor ="pointer";
+                photographerImage.style.cursor = "pointer";
+                article.appendChild(photographerImage);
 
                 photographerImage.addEventListener("click", () => {
                     const carouselContainer = document.querySelector(".carousel-container");
                     carouselContainer.style.display = "flex";
-                    /*carouselContainer.style.position = "fixed";
-                    carouselContainer.style.top = "0px";
-                    carouselContainer.style.left = "0px";*/
                     carouselContainer.setAttribute("aria-hidden", "false");
 
                     const carousel = document.querySelector(".carousel");
                     carousel.style.margin = "auto";
 
                     const carouselHeader = document.querySelector(".carousel-header");
-                    carouselHeader.style.display= "flex";
-                    carouselHeader.style.justifyContent="end";
-                    carouselHeader.innerHTML="";
+                    carouselHeader.style.display = "flex";
+                    carouselHeader.style.justifyContent = "end";
+                    carouselHeader.innerHTML = "";
 
                     const crossInCarouselHeader = document.querySelector("#crossInCarousel");
                     crossInCarouselHeader.addEventListener("click", closeCarousel);
 
 
-                    const carouselImageContainer= document.querySelector(".carousel-image-container");
+                    const carouselImageContainer = document.querySelector(".carousel-image-container");
                     carouselImageContainer.innerHTML = "";
 
                     const imageInCarousel = document.createElement("img");
@@ -62,24 +60,63 @@ function mediaTemplate(data) {
                     titleInCarousel.setAttribute("class", "titleInCarousel");
                     titleInCarousel.textContent = title;
                     carouselImageContainer.appendChild(titleInCarousel);
-                    
+
 
 
                     const photographerBody = document.querySelector("#photographerBody");
                     photographerBody.setAttribute("aria-hidden", "true");
                     photographerBody.style.overflow = "hidden";
 
-
-                    //                showCarousel(photographerMedias);
                 });
-                article.appendChild(photographerImage);
+
             } else if (video) {
                 const photographerVideo = document.createElement('video');
                 photographerVideo.setAttribute("src", photographerMedias);
                 photographerVideo.setAttribute("class", "photographer-video");
                 photographerVideo.setAttribute("controls", "true");
+                photographerVideo.style.cursor = "pointer";
                 article.appendChild(photographerVideo);
+
+                photographerVideo.addEventListener("click", (event) => {
+                    event.preventDefault();
+                    const carouselContainer = document.querySelector(".carousel-container");
+                    carouselContainer.style.display = "flex";
+                    carouselContainer.setAttribute("aria-hidden", "false");
+
+                    const carousel = document.querySelector(".carousel");
+                    carousel.style.margin = "auto";
+
+                    const carouselHeader = document.querySelector(".carousel-header");
+                    carouselHeader.style.display = "flex";
+                    carouselHeader.style.justifyContent = "end";
+                    carouselHeader.innerHTML = "";
+
+                    const crossInCarouselHeader = document.querySelector("#crossInCarousel");
+                    crossInCarouselHeader.addEventListener("click", closeCarousel);
+
+                    const carouselVideoContainer = document.querySelector(".carousel-image-container");
+                    carouselVideoContainer.innerHTML = "";
+
+                    const videoInCarousel = document.createElement("video");
+                    videoInCarousel.setAttribute("src", photographerMedias);
+                    videoInCarousel.setAttribute("class", "imageInCarousel");
+                    videoInCarousel.setAttribute("controls", "true");
+                    carouselVideoContainer.appendChild(videoInCarousel);
+
+                    const titleInCarousel = document.createElement("span");
+                    titleInCarousel.setAttribute("class", "titleInCarousel");
+                    titleInCarousel.textContent = title;
+                    carouselImageContainer.appendChild(titleInCarousel);
+
+                    const photographerBody = document.querySelector("#photographerBody");
+                    photographerBody.setAttribute("aria-hidden", "true");
+                    photographerBody.style.overflow = "hidden";
+                });
             }
+
+
+
+
         }
         imgOrVideo(photographerMedias);
 

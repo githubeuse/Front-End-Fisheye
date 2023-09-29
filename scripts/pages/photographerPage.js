@@ -56,18 +56,18 @@ async function getPhotographerMedias(id) {
     //});
 
     const media = medias.filter(item => item.photographerId === parseInt(id));
+    console.log(media);
 
     return media;
 
     //console.log(media.photographerId);
-
 }
-
 
 //affiche les informations MEDIA
 async function displayPhotographerMedias(media) {
     const mediasSection = document.querySelector(".realisations");
     console.log("media length : " + media.length);
+
 
     media.forEach((med) => {
         const mediaModel = mediaTemplate(med);
@@ -76,7 +76,11 @@ async function displayPhotographerMedias(media) {
         mediasSection.appendChild(mediaCardDom);
         console.log("med", med.title);
     })
+
 }
+
+
+
 
 async function init() {
     // Récupère les datas du photographe
@@ -86,10 +90,81 @@ async function init() {
 init();
 
 async function init2() {
+    //récupère les médias et les affiche
     const media = await getPhotographerMedias(id);
     displayPhotographerMedias(media);
 }
 init2();
+
+
+//const carouselItems = getPhotographerMedias(id);
+//console.log(carouselItems.length);
+const previousButton = document.querySelector(".crochetGauche");
+const nextButton = document.querySelector(".crochetDroit");
+let currentItemPosition = 0;
+
+// Funcs
+const goToNextSlide = () => {
+    if (currentItemPosition + 1 >= carouselItems.length) {
+       const lastItem = carouselItems[currentItemPosition];
+       currentItemPosition = 0;
+       const currentItem = carouselItems[currentItemPosition];
+       setNodeAttributes(lastItem, currentItem);
+    } else {
+       currentItemPosition += 1;
+       const lastItem = carouselItems[currentItemPosition - 1];
+       const currentItem = carouselItems[currentItemPosition];
+       setNodeAttributes(lastItem, currentItem);
+    }
+ }
+ 
+ const goToPreviousSlide = () => {
+    if (currentItemPosition - 1 >= 0) {
+       currentItemPosition -= 1;
+       const currentItem = carouselItems[currentItemPosition];
+       const lastItem = carouselItems[currentItemPosition + 1];
+       setNodeAttributes(lastItem, currentItem);
+    } else {
+       const lastItem = carouselItems[currentItemPosition];
+       currentItemPosition = carouselItems.length - 1;
+       const currentItem = carouselItems[currentItemPosition];
+       setNodeAttributes(lastItem, currentItem);
+    }
+ }
+ 
+ const setNodeAttributes = (lastItem, currentItem) => {
+    lastItem.style.display = 'none';
+    currentItem.style.display = 'block';
+    lastItem.setAttribute('aria-hidden', 'true');
+    currentItem.setAttribute('aria-hidden', 'false');
+ }
+ 
+ // Events
+ previousButton.addEventListener('click', () => {
+    goToPreviousSlide();
+ });
+ 
+ nextButton.addEventListener('click', () => {
+    goToNextSlide();
+ });
+ 
+ document.addEventListener('keydown', function (e) {
+    const key = e.key;
+    if (key === 39) {
+       goToNextSlide();
+    } else if (key === 37) {
+       goToPreviousSlide();
+    }
+ });
+
+
+
+ document.addEventListener('DOMContentLoaded', () => {
+    carouselInterval = setInterval(goToNextSlide, 5000);
+ });
+
+
+
 
 
 /*const photographerImages = document.querySelectorAll(".photographer-image");

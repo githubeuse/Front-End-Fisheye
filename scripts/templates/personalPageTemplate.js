@@ -97,6 +97,9 @@ function photographerTemplate(data) {
 
 
 
+
+
+
 /*const parentStatic = document.querySelector(".realisations");
 parentStatic.addEventListener("click", function (event) {
     // Vérifiez si l'élément cliqué a la classe .photographer-image
@@ -138,5 +141,6 @@ document.addEventListener('keydown', function (esc) {
         closeCarousel();
     }
 }); 
+
 
 
