@@ -46,10 +46,7 @@ function mediaTemplate(data) {
                     carouselHeader.style.justifyContent="end";
                     carouselHeader.innerHTML="";
 
-                    const crossInCarouselHeader = document.createElement("i");
-                    crossInCarouselHeader.setAttribute("class", "fa-solid fa-xmark");
-                    crossInCarouselHeader.setAttribute("id", "crossInCarouselHeader");
-                    carouselHeader.appendChild(crossInCarouselHeader);
+                    const crossInCarouselHeader = document.querySelector("#crossInCarousel");
                     crossInCarouselHeader.addEventListener("click", closeCarousel);
 
 

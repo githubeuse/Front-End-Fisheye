@@ -76,7 +76,6 @@ async function displayPhotographerMedias(media) {
         mediasSection.appendChild(mediaCardDom);
         console.log("med", med.title);
     })
-
 }
 
 async function init() {

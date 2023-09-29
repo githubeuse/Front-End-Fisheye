@@ -16,12 +16,34 @@
 .carousel{
     background-color: white;
     border: black 1px solid;
+    display: flex;
+    position: relative;
 }
 
-#crossInCarouselHeader{
+#crossInCarousel,
+.crochets {
     color: #901C1C;
     font-size: 2em;
     cursor: pointer;
+    padding: 0.5em;
+}
+
+
+.left-part-header,
+.right-part-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#crossInCarousel{
+    position: absolute;
+    top: 0px;
+}
+
+.central-part-header{
+    display: flex;
+    flex-direction: column;
 }
 
 .carousel-image-container{
@@ -35,6 +57,7 @@
 .imageInCarousel {
     width: 25vw;
     height: 50vh;
+    padding: 0.5em;
     object-fit: cover;
 }
 

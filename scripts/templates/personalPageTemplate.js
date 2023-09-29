@@ -97,17 +97,17 @@ function photographerTemplate(data) {
 
 
 
-const parentStatic = document.querySelector(".realisations");
+/*const parentStatic = document.querySelector(".realisations");
 parentStatic.addEventListener("click", function (event) {
     // Vérifiez si l'élément cliqué a la classe .photographer-image
     if (event.target.classList.contains("photographer-image")) {
         showCarousel();
     }
-});
+});*/
 
-function showCarousel() {
+/*function showCarousel() {
     console.log("hello");
-    /*const carouselContainer = document.querySelector(".carousel-container");
+    const carouselContainer = document.querySelector(".carousel-container");
     carouselContainer.style.display = "flex";
     carouselContainer.style.position = "fixed";
     carouselContainer.style.top= "0px";
@@ -120,8 +120,8 @@ function showCarousel() {
 
     const photographerBody = document.querySelector("#photographerBody");
     photographerBody.setAttribute("aria-hidden", "true");
-    photographerBody.style.overflow = "hidden";*/
-}
+    photographerBody.style.overflow = "hidden";
+}*/
 
 function closeCarousel(){
     const carouselContainer = document.querySelector(".carousel-container");
@@ -137,6 +137,6 @@ document.addEventListener('keydown', function (esc) {
     if (carouselContainer.getAttribute('aria-hidden') === 'false' && key === 'Escape') {
         closeCarousel();
     }
-})
+}); 
 
 
