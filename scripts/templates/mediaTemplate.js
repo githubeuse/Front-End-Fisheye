@@ -30,6 +30,9 @@ function mediaTemplate(data) {
                 photographerImage.setAttribute("alt", "Image de " + title);
                 photographerImage.style.cursor = "pointer";
                 article.appendChild(photographerImage);
+                photographerImage.addEventListener("click", () => {
+                    openLightBox(data);
+                });
 
             } else if (video) {
                 const photographerVideo = document.createElement('video');
@@ -86,16 +89,52 @@ function mediaTemplate(data) {
         leftContainer.setAttribute('class', "leftContainer");
         bottomLine.appendChild(leftContainer);
 
-        const rightContainer = document.createElement('div');
-        const heartNextToTitle = document.createElement('i');
-        heartNextToTitle.setAttribute("class", "fa-regular fa-heart");
-        rightContainer.appendChild(heartNextToTitle);
-        bottomLine.appendChild(rightContainer);
-
         const imageTitle = document.createElement('p');
         imageTitle.textContent = title;
         imageTitle.setAttribute("focusable", false);
         leftContainer.appendChild(imageTitle);
+
+        const middleContainer = document.createElement('div');
+        bottomLine.appendChild(middleContainer);
+
+        let LikesForEachMedia = document.createElement('span');
+        LikesForEachMedia.innerText = likes;
+        middleContainer.appendChild(LikesForEachMedia);
+
+        const rightContainer = document.createElement('div');
+        bottomLine.appendChild(rightContainer);
+
+        const heartNextToTitle = document.createElement('i');
+        heartNextToTitle.setAttribute("class", "fa-regular fa-heart");
+        heartNextToTitle.style.cursor = "pointer";
+        rightContainer.appendChild(heartNextToTitle);
+
+        // incrémentation du nombre de likes 
+
+        heartNextToTitle.addEventListener("click", () => {
+            // si le coeur n'est pas disabled
+            if (!heartNextToTitle.disabled) {
+                // incrémentation du nombre de likes en dessous de chaque média
+                LikesForEachMedia.innerText = likes + 1;
+                heartNextToTitle.setAttribute("class", "fa-solid fa-heart");
+
+                // on rappelle la constante totalOfLikes ici, car on n'y a pas accès à la base
+                const totalOfLikes = document.querySelector("#totalOfLikes");
+
+                // on fait passer le contenu du texte de totalOfLikes qui est dispo dans le DOM en integer, et on lui ajoute + 1
+                const newTotal = parseInt(totalOfLikes.textContent) + 1;
+
+                // on dit que le contenu de totalOfLikes est remplacé par le nouveau total
+                totalOfLikes.textContent = newTotal;
+
+                //on passe heartToTitle disabled à true
+                heartNextToTitle.disabled = true;
+
+                console.log(newTotal);
+            }
+        });
+
+
 
         return article;
     }
@@ -111,4 +150,48 @@ function mediaTemplate(data) {
         photographerMedias,
         getMediaCardDOM
     };
+}
+
+const carouselMediaContainer = document.querySelector(".carousel-media-container");
+
+function openLightBox(med) {
+    const carouselContainer = document.querySelector(".carousel-container");
+    carouselContainer.style.display = "flex";
+    carouselContainer.setAttribute("aria-hidden", "false");
+
+    const carousel = document.querySelector(".carousel");
+    carousel.style.margin = "auto";
+
+    const crossInCarouselHeader = document.querySelector("#crossInCarousel");
+    crossInCarouselHeader.addEventListener("click", closeCarousel);
+
+    carouselMediaContainer.innerHTML = "";
+
+    const photographerMedias = med.image ? `assets/images/${med.image}` : `assets/images/${med.video}`;
+
+    let mediaElement;
+    if (med.image) {
+        const imageInCarousel = document.createElement("img");
+        mediaElement = imageInCarousel;
+        imageInCarousel.setAttribute("src", photographerMedias);
+        imageInCarousel.setAttribute("class", "imageInCarousel");
+
+    } else if (med.video) {
+        const videoInCarousel = document.createElement("video");
+        mediaElement = videoInCarousel;
+        videoInCarousel.setAttribute("src", photographerMedias);
+        videoInCarousel.setAttribute("class", "videoInCarousel");
+        videoInCarousel.setAttribute("controls", "true");
+    }
+    carouselMediaContainer.appendChild(mediaElement);
+
+    const titleInCarousel = document.createElement("span");
+    titleInCarousel.setAttribute("class", "titleInCarousel");
+    titleInCarousel.textContent = med.title;
+    carouselMediaContainer.appendChild(titleInCarousel);
+
+    const photographerBody = document.querySelector("#photographerBody");
+    photographerBody.setAttribute("aria-hidden", "true");
+    photographerBody.style.overflow = "hidden";
+
 }
