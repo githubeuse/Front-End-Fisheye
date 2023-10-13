@@ -1,5 +1,5 @@
-//Template
-function photographerTemplate(data) {
+//Template des cards pour chaque profil de photographe sur la page index
+function cardOfEachPhotographerTemplate(data) {
     const { name, portrait, city, country, tagline, price, id } = data;
 
     const picture = `assets/photographers/${portrait}`;
@@ -17,7 +17,6 @@ function photographerTemplate(data) {
         img.setAttribute("alt", "Photo de " + name);
         link.appendChild(img);
         
-
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
         h2.setAttribute("focusable", true);
@@ -34,6 +33,8 @@ function photographerTemplate(data) {
 
         const spanPrice = document.createElement ( 'span' );
         spanPrice.textContent = price +"€/jour";
+
+
 
         article.appendChild(link);
         article.appendChild(spanCity);

@@ -1,104 +1,112 @@
-//Mettre le code JavaScript lié à la page photographer.html
-
-//Si l'URL de votre page est https://example.com/?nom=Jonathan%20Smith&age=18 vous pouvez extraire les paramètres 'nom' et 'age' en utilisant:
-// L'url de ma page est : http://127.0.0.1:5501/photographer.html?id=243
-
-
-//let params = new URL(document.location).searchParams;
-//let name = params.get("nom"); // la chaine de caractère "Jonathan Smith".
-//let age = parseInt(params.get("age")); // le nombre 18
-
-//passe le bouton contact en display none
-//const contactButton = document.querySelector(".contact_button");
-//contactButton.style.display = "none";
-
 function getId() {
-    //récupère l'id de la page
     let params = new URL(document.location).searchParams;
     let id = params.get("id");
     console.log(`id =` + id);
     return id;
 }
 
-//getMediaCardDOM
 const id = getId();
 
 
-//récupère les datas PHOTOGRAPHER du ficher json
 async function getPhotographerDatas(id) {
     const response = await fetch('data/photographers.json');
     const data = await response.json();
     const photographers = data.photographers;
-    //Filtre les photographes en fonction de l'id
     const photographer = photographers.find(photographer => photographer.id === parseInt(id));
     console.log(`photographer = ` + photographer.price);
-    // 3/ retourne la response au format json
     return photographer;
-
 }
-//affiche les informations PHOTOGRAPHER
-async function displayPhotographerDatas(photographer) {
-    const photographersSection = document.querySelector(".photograph-header");
 
-    const photographerModel = photographerTemplate(photographer);
+async function displayPhotographerDatas(photographer, media) {
+    const photographersSection = document.querySelector(".photograph-header");
+    const photographerModel = photographerHeaderTemplate(photographer, media);
     const userCardDOM = photographerModel.getUserCardDOM();
+    console.log(media);
     photographersSection.appendChild(userCardDOM);
 }
 
-//récupère les datas MEDIA du fichier json
 async function getPhotographerMedias(id) {
     const response = await fetch('data/photographers.json');
     const data = await response.json();
     const medias = data.media;
-
-    //medias.forEach((media) => {
-    //    medias.find(media => media.photographerId === parseInt(id));
-    //});
-
     const media = medias.filter(item => item.photographerId === parseInt(id));
-    console.log(media);
-
     return media;
-
-    //console.log(media.photographerId);
 }
 
-//affiche les informations MEDIA
+
 async function displayPhotographerMedias(media) {
     const mediasSection = document.querySelector(".realisations");
-    console.log("media length : " + media.length);
-
-
+    carouselItems = media;
     media.forEach((med) => {
         const mediaModel = mediaTemplate(med);
         const mediaCardDom = mediaModel.getMediaCardDOM();
-        console.log(mediaCardDom);
+        mediaCardDom.addEventListener("click", () => {
+            openLightBox(med);
+            currentItemPosition = media.indexOf(med);
+        });
         mediasSection.appendChild(mediaCardDom);
-        console.log("med", med.title);
-    })
+    });
 
 }
+const carouselMediaContainer = document.querySelector(".carousel-media-container");
 
+function openLightBox(med) {
+    const carouselContainer = document.querySelector(".carousel-container");
+    carouselContainer.style.display = "flex";
+    carouselContainer.setAttribute("aria-hidden", "false");
 
+    const carousel = document.querySelector(".carousel");
+    carousel.style.margin = "auto";
+
+    const crossInCarouselHeader = document.querySelector("#crossInCarousel");
+    crossInCarouselHeader.addEventListener("click", closeCarousel);
+
+    carouselMediaContainer.innerHTML = "";
+
+    const photographerMedias = med.image ? `assets/images/${med.image}` : `assets/images/${med.video}`;
+    
+    let mediaElement;
+    if (med.image) {
+        const imageInCarousel = document.createElement("img");
+        mediaElement = imageInCarousel;
+        imageInCarousel.setAttribute("src", photographerMedias);
+        imageInCarousel.setAttribute("class", "imageInCarousel");
+
+    } else if (med.video) {
+        const videoInCarousel = document.createElement("video");
+        mediaElement = videoInCarousel;
+        videoInCarousel.setAttribute("src", photographerMedias);
+        videoInCarousel.setAttribute("class", "videoInCarousel");
+        videoInCarousel.setAttribute("controls", "true");
+    }
+    carouselMediaContainer.appendChild(mediaElement);
+
+    const titleInCarousel = document.createElement("span");
+    titleInCarousel.setAttribute("class", "titleInCarousel");
+    titleInCarousel.textContent = med.title;
+    carouselMediaContainer.appendChild(titleInCarousel);
+
+    const photographerBody = document.querySelector("#photographerBody");
+    photographerBody.setAttribute("aria-hidden", "true");
+    photographerBody.style.overflow = "hidden";
+
+}
 
 
 async function init() {
-    // Récupère les datas du photographe
     const photographer = await getPhotographerDatas(id);
-    displayPhotographerDatas(photographer);
-}
-init();
-
-async function init2() {
-    //récupère les médias et les affiche
     const media = await getPhotographerMedias(id);
     displayPhotographerMedias(media);
+    displayPhotographerDatas(photographer, media);
+
 }
-init2();
+
+init();
 
 
-//const carouselItems = getPhotographerMedias(id);
-//console.log(carouselItems.length);
+
+let carouselItems = [];
+
 const previousButton = document.querySelector(".crochetGauche");
 const nextButton = document.querySelector(".crochetDroit");
 let currentItemPosition = 0;
@@ -106,70 +114,84 @@ let currentItemPosition = 0;
 // Funcs
 const goToNextSlide = () => {
     if (currentItemPosition + 1 >= carouselItems.length) {
-       const lastItem = carouselItems[currentItemPosition];
-       currentItemPosition = 0;
-       const currentItem = carouselItems[currentItemPosition];
-       setNodeAttributes(lastItem, currentItem);
+        currentItemPosition = 0;
     } else {
-       currentItemPosition += 1;
-       const lastItem = carouselItems[currentItemPosition - 1];
-       const currentItem = carouselItems[currentItemPosition];
-       setNodeAttributes(lastItem, currentItem);
+        currentItemPosition += 1;
     }
- }
- 
- const goToPreviousSlide = () => {
-    if (currentItemPosition - 1 >= 0) {
-       currentItemPosition -= 1;
-       const currentItem = carouselItems[currentItemPosition];
-       const lastItem = carouselItems[currentItemPosition + 1];
-       setNodeAttributes(lastItem, currentItem);
+    let currentItem = carouselItems[currentItemPosition];
+    setNodeAttributes(currentItem);
+    console.log("carousel items length ====>" + carouselItems.length);
+    console.log("current item position ====> " + currentItemPosition);
+}
+
+const goToPreviousSlide = () => {
+    // si la position actuelle moins 1 correpond à la position 0
+    if (currentItemPosition == 0) {
+        currentItemPosition = carouselItems.length - 1;
     } else {
-       const lastItem = carouselItems[currentItemPosition];
-       currentItemPosition = carouselItems.length - 1;
-       const currentItem = carouselItems[currentItemPosition];
-       setNodeAttributes(lastItem, currentItem);
+        currentItemPosition -= 1;
+
     }
- }
- 
- const setNodeAttributes = (lastItem, currentItem) => {
-    lastItem.style.display = 'none';
-    currentItem.style.display = 'block';
-    lastItem.setAttribute('aria-hidden', 'true');
-    currentItem.setAttribute('aria-hidden', 'false');
- }
- 
- // Events
- previousButton.addEventListener('click', () => {
+    let currentItem = carouselItems[currentItemPosition];
+    setNodeAttributes(currentItem);
+    console.log("carousel items length ====>" + carouselItems.length);
+    console.log("current item position ====> " + currentItemPosition);
+
+}
+
+
+const setNodeAttributes = (currentItem) => {
+    carouselMediaContainer.innerHTML = "";
+    if (currentItem.image) {
+        const carouselImage = document.createElement('img');
+        carouselImage.setAttribute("src", `assets/images/${currentItem.image}`);
+        carouselImage.setAttribute("class", "imageInCarousel");
+        carouselMediaContainer.appendChild(carouselImage);
+        console.log("currentItem ====>" + currentItem.image);
+
+    } else if (currentItem.video){
+        const carouselVideo = document.createElement('video');
+        carouselVideo.setAttribute("src", `assets/images/${currentItem.video}`);
+        carouselVideo.setAttribute("controls", "true");
+        carouselVideo.setAttribute("class", "videoInCarousel");
+        carouselMediaContainer.appendChild(carouselVideo);
+    }
+    const titleInCarousel = document.createElement("span");
+    titleInCarousel.setAttribute("class", "titleInCarousel");
+    titleInCarousel.textContent = currentItem.title;
+    carouselMediaContainer.appendChild(titleInCarousel);
+}    
+
+// Events
+previousButton.addEventListener('click', () => {
     goToPreviousSlide();
- });
- 
- nextButton.addEventListener('click', () => {
+});
+
+nextButton.addEventListener('click', () => {
     goToNextSlide();
- });
- 
- document.addEventListener('keydown', function (e) {
+});
+
+document.addEventListener('keydown', function (e) {
     const key = e.key;
-    if (key === 39) {
-       goToNextSlide();
-    } else if (key === 37) {
-       goToPreviousSlide();
+    if (key === 'ArrowRight') {
+        goToNextSlide();
+    } else if (key === 'ArrowLeft') {
+        goToPreviousSlide();
     }
- });
+});
 
+function closeCarousel(){
+    const carouselContainer = document.querySelector(".carousel-container");
+    carouselContainer.style.display = "none";
+    const photographerBody = document.querySelector("#photographerBody");
+    photographerBody.style.overflow= "auto";
+}
 
-
- document.addEventListener('DOMContentLoaded', () => {
-    carouselInterval = setInterval(goToNextSlide, 5000);
- });
-
-
-
-
-
-/*const photographerImages = document.querySelectorAll(".photographer-image");
-photographerImages.forEach((image) => {
-    image.addEventListener("click", function () {
-        console.log("hello");
-    });
-});*/
+//Mise en place touche escape pour fermer la modale
+document.addEventListener('keydown', function (esc) {
+    const key = esc.key;
+    const carouselContainer = document.querySelector(".carousel-container");
+    if (carouselContainer.getAttribute('aria-hidden') === 'false' && key === 'Escape') {
+        closeCarousel();
+    }
+}); 

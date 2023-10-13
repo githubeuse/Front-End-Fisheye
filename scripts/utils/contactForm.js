@@ -6,7 +6,8 @@ function launchDisplayModal() {
 
     modal.style.left = "0px";
     modal.setAttribute("aria-hidden", "false");
-    const firstInput = document.querySelector("#firstName");
+
+    const firstInput = document.querySelector("#prenom");
     firstInput.focus();
     
 }

@@ -28,7 +28,6 @@
     padding: 0.5em;
 }
 
-
 .left-part-header,
 .right-part-header {
     display: flex;
@@ -46,17 +45,17 @@
     flex-direction: column;
 }
 
-.carousel-image-container{
-    width: 100%;
-    height: 100%;
+.carousel-media-container{
+    width: 90%;
+    height: 90%;
     display: flex;
     flex-direction: column;
 }
 
-
-.imageInCarousel {
-    width: 25vw;
-    height: 50vh;
+.imageInCarousel,
+.videoInCarousel {
+    width: 90vw;
+    height: 90vh;
     padding: 0.5em;
     object-fit: cover;
 }
