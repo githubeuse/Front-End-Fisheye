@@ -10,6 +10,8 @@
   <title>Fisheye - photographe </title>
 </head>
 
+
+
 <body id="photographerBody">
   <!--Entête-->
   <header role="banner">
@@ -24,15 +26,24 @@
   <!--Présentation du photographe-->
   <main id="main">
     <div class="photograph-header">
-      <button class="contact_button"  aria-label="Contact Me">Contactez-moi</button>
+      <button class="contact_button" aria-label="Contactez-moi">Contactez-moi</button>
     </div>
+
+    
     <!--Zone filtre-->
     <section class="filter">
-      <label for="tri">Trier par</label>
+      <label for="tri" id="label-tri">Trier par</label>
       <select id="tri" aria-label="Tri par">
-        <option value="popularite">Popularité</option>
-        <option value="date">Date</option>
-        <option value="titre">Titre</option>
+        <optgroup>
+          <option value="popularite" class="option-tri"> Popularité</option>
+        </optgroup>
+        <optgroup>
+          <option value="date" class="option-tri">Date</option>
+        </optgroup>
+        <optgroup>
+          <option value="titre" class="option-tri">Titre</option>
+        </optgroup>
+        <optgroup></optgroup>
       </select>
     </section>
 
@@ -57,7 +68,7 @@
 
 
   <!--Modale-->
-  <div id="contact_modal" role="dialog" aria-hidden="true" aria-labelledby="h2InModalWindow">
+  <div id="contact_modal" role="dialog" aria-hidden="true" aria-labelledby="h1InModalWindow">
     <div class="modal">
       <header class="modal-header">
         <h1 id="h1InModalWindow" class="h1InModalWindow">Contactez-moi</h1>
@@ -67,30 +78,25 @@
       <form id="formulaire">
         <div>
           <label for="prenom">Prénom</label>
-          <input type="text" id="prenom" name="prenom" aria-labbeledby="prenom" aria-describedby="prenom-description"
-            placeholder="Par exemple : Enzo" />
+          <input type="text" id="prenom" name="prenom" aria-labelledby="prenom" aria-describedby="prenom-description" placeholder="Par exemple : Enzo" />
           <span id="prenom-description" class="hidden" aria-hidden="false">Rentrez votre prénom</span>
-
+          
           <label for="nom">Nom</label>
-          <input type="text" id="nom" name="nom" aria-labelledby="nom" aria-describedby="nom-description"
-            placeholder="Par exemple : Dupont" />
+          <input type="text" id="nom" name="nom" aria-labelledby="nom" aria-describedby="nom-description" placeholder="Par exemple : Dupont" />
           <span id="nom-description" class="hidden" aria-hidden="false">Rentrez votre nom de famille</span>
-
-
+          
           <label for="email">Email</label>
-          <input type="email" id="email" name="user_email" aria-labelledy="email" aria-describedby="email-description"
-            placeholder="Par exemple : enzo@dupont.fr" />
+          <input type="email" id="email" name="user_email" aria-labelledby="email" aria-describedby="email-description" placeholder="Par exemple : enzo@dupont.fr" />
           <span id="email-description" class="hidden" aria-hidden="false">Rentrez votre email</span>
-
-
-          <label aria-labbeledby="message" for="message">Votre message</label>
+          
+          <label aria-labelledby="message" for="message">Votre message</label>
           <textarea id="message" class="message" name="message" aria-describedby="message-description"></textarea>
           <span id="message-description" class="hidden" aria-hidden="false">Rentrez votre message</span>
-
+          
 
         </div>
-        <button class="bouton-envoyer" aria-describedby="button-envoyer-description">Envoyer</button>
-        <span id="bouton-envoyer-description" class="hidden" aria-hidden="false">Cliquer pour envoyer le
+        <button class="bouton-envoyer" aria-describedby="envoyerDescription">Envoyer</button>
+        <span id="envoyerDescription" class="hidden" aria-hidden="false">Cliquer pour envoyer le
           formulaire</span>
 
       </form>
@@ -106,7 +112,8 @@
         <div class="carousel-header"></div>
         <div class="carousel-media-container"></div>
       </div>
-      <div class="right-part-header"> <i class="fa-solid fa-xmark" id="crossInCarousel" title="Fermer la fenêtre"></i><i class="crochets crochetDroit fa-solid fa-greater-than"></i> </div>
+      <div class="right-part-header"> <i class="fa-solid fa-xmark" id="crossInCarousel" title="Fermer la fenêtre"></i><i
+          class="crochets crochetDroit fa-solid fa-greater-than"></i> </div>
     </div>
   </div>
 

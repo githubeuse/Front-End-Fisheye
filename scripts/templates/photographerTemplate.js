@@ -32,6 +32,8 @@ export function photographerTemplate(data, medias) {
         const h1 = document.createElement('h1');
         h1.textContent = name;
         h1.setAttribute("focusable", true);
+        h1.setAttribute("aria-hidden", false);
+        h1.setAttribute("tabindex", "0");
         h1.setAttribute("class", "nameOfPhotographer");
         div1.appendChild(h1);
 

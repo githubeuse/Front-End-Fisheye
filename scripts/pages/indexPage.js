@@ -7,8 +7,6 @@ import { cardOfEachPhotographerTemplate } from "/scripts/templates/cardOfEachPho
         return photographers;            
     }
 
-
-
     async function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
 

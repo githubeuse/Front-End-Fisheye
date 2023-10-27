@@ -1,5 +1,7 @@
 // Template des cards de medias, sur la page personnelle de chaque photographe
-import { closeCarousel } from "/scripts/pages/photographerPage.js";
+import {
+    closeCarousel
+} from "/scripts/pages/photographerPage.js";
 
 export function mediaTemplate(data) {
 
@@ -21,6 +23,9 @@ export function mediaTemplate(data) {
         const article = document.createElement('article');
         article.setAttribute('class', 'article-media');
 
+        const link = document.createElement("a");
+        link.setAttribute("aria-label", title);
+
 
         function imgOrVideo(photographerMedias) {
             if (image) {
@@ -28,11 +33,16 @@ export function mediaTemplate(data) {
                 photographerImage.setAttribute("src", photographerMedias);
                 photographerImage.setAttribute("class", "photographer-image");
                 photographerImage.setAttribute("alt", "Image de " + title);
-                photographerImage.setAttribute("aria-hidden", "false");
+                photographerImage.setAttribute("tabindex", "0");
                 photographerImage.style.cursor = "pointer";
-                article.appendChild(photographerImage);
+                link.appendChild(photographerImage);
                 photographerImage.addEventListener("click", () => {
-                    openLightBox(data);
+                    openLightBox(data);             
+                });
+                photographerImage.addEventListener("keyup", (event) => {
+                    if (event.key === "Enter") {
+                    openLightBox(data);           
+                    }
                 });
 
             } else if (video) {
@@ -41,11 +51,12 @@ export function mediaTemplate(data) {
                 photographerVideo.setAttribute("class", "photographer-video");
                 photographerVideo.setAttribute("controls", "true");
                 photographerVideo.style.cursor = "pointer";
-                article.appendChild(photographerVideo);
-
+                link.appendChild(photographerVideo);
             }
         }
         imgOrVideo(photographerMedias);
+
+        article.appendChild(link);
 
         const bottomLine = document.createElement('div');
         bottomLine.setAttribute('class', 'bottom-line');
@@ -75,31 +86,66 @@ export function mediaTemplate(data) {
         heartNextToTitle.setAttribute("class", "fa-regular fa-heart");
         heartNextToTitle.style.cursor = "pointer";
         heartNextToTitle.setAttribute("aria-label", "likes");
+        heartNextToTitle.setAttribute("tabindex", "0");
         rightContainer.appendChild(heartNextToTitle);
         // incrémentation du nombre de likes 
 
-        heartNextToTitle.addEventListener("click", () => {
-            // si le coeur n'est pas disabled
+
+
+        /*        heartNextToTitle.addEventListener("click", () => {
+                    // si le coeur n'est pas disabled
+                    if (!heartNextToTitle.disabled) {
+                        // incrémentation du nombre de likes en dessous de chaque média
+                        LikesForEachMedia.innerText = likes + 1;
+                        heartNextToTitle.setAttribute("class", "fa-solid fa-heart");
+
+                        // on rappelle la constante totalOfLikes ici, car on n'y a pas accès à la base
+                        const totalOfLikes = document.querySelector("#totalOfLikes");
+
+                        // on fait passer le contenu du texte de totalOfLikes qui est dispo dans le DOM en integer, et on lui ajoute + 1
+                        const newTotal = parseInt(totalOfLikes.textContent) + 1;
+
+                        // on dit que le contenu de totalOfLikes est remplacé par le nouveau total
+                        totalOfLikes.textContent = newTotal;
+
+                        //on passe heartToTitle disabled à true
+                        heartNextToTitle.disabled = true;
+
+                        console.log(newTotal);
+                    }
+                });
+        */
+
+        function incrementeLesLikes() {
             if (!heartNextToTitle.disabled) {
-                // incrémentation du nombre de likes en dessous de chaque média
+                // Incrémentation du nombre de likes en dessous de chaque média
                 LikesForEachMedia.innerText = likes + 1;
                 heartNextToTitle.setAttribute("class", "fa-solid fa-heart");
 
-                // on rappelle la constante totalOfLikes ici, car on n'y a pas accès à la base
+                // On rappelle la constante totalOfLikes ici, car on n'y a pas accès à la base
                 const totalOfLikes = document.querySelector("#totalOfLikes");
 
-                // on fait passer le contenu du texte de totalOfLikes qui est dispo dans le DOM en integer, et on lui ajoute + 1
+                // On fait passer le contenu du texte de totalOfLikes qui est disponible dans le DOM en tant qu'entier, et on lui ajoute +1
                 const newTotal = parseInt(totalOfLikes.textContent) + 1;
 
-                // on dit que le contenu de totalOfLikes est remplacé par le nouveau total
+                // On met à jour le contenu de totalOfLikes avec le nouveau total
                 totalOfLikes.textContent = newTotal;
 
-                //on passe heartToTitle disabled à true
+                // On passe heartToTitle.disabled à true
                 heartNextToTitle.disabled = true;
 
                 console.log(newTotal);
             }
+        }
+
+        // Vous pouvez ensuite ajouter les écouteurs d'événements comme vous l'avez mentionné :
+        heartNextToTitle.addEventListener("click", incrementeLesLikes);
+        heartNextToTitle.addEventListener("keyup", (event) => {
+            if (event.key === "Enter") {
+                incrementeLesLikes();
+            }
         });
+
 
 
 
@@ -124,7 +170,6 @@ const carouselMediaContainer = document.querySelector(".carousel-media-container
 function openLightBox(med) {
     const carouselContainer = document.querySelector(".carousel-container");
     carouselContainer.style.display = "flex";
-    carouselContainer.setAttribute("aria-hidden", "false");
 
     const carousel = document.querySelector(".carousel");
     carousel.style.margin = "auto";
@@ -142,7 +187,7 @@ function openLightBox(med) {
         mediaElement = imageInCarousel;
         imageInCarousel.setAttribute("src", photographerMedias);
         imageInCarousel.setAttribute("class", "imageInCarousel");
-
+        imageInCarousel.focus();
     } else if (med.video) {
         const videoInCarousel = document.createElement("video");
         mediaElement = videoInCarousel;
@@ -162,3 +207,4 @@ function openLightBox(med) {
     photographerBody.style.overflow = "hidden";
 
 }
+

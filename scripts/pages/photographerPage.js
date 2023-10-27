@@ -1,6 +1,8 @@
 import { photographerTemplate } from "/scripts/templates/photographerTemplate.js";
 import { mediaTemplate } from "/scripts/templates/mediaTemplate.js";
 
+//RECUP ET AFFICHAGE DES MEDIAS POUR CHAQUE PHOTOGRAPHE EN FONCTION DE SON ID
+
 function getId() {
     let params = new URL(document.location).searchParams;
     let id = params.get("id");
@@ -27,7 +29,6 @@ async function displayPhotographerDatas(photographer, media) {
     console.log(media);
     photographersSection.appendChild(userCardDOM);
 }
-
 
 
 
@@ -73,7 +74,7 @@ async function init() {
 init();
 
 
-
+// FONCTION TRI DE LA PAGE PHOTOGRAPHER.HTML
 
 const sortButton = document.querySelector("#tri");
 
@@ -127,7 +128,6 @@ function sorting() {
 
     }
 
-    // Maintenant que le tableau a été trié, vous pouvez l'afficher dans la console ou effectuer d'autres opérations avec les données triées.
     console.log("mediaData après tri:", mediaData);
     displayPhotographerMedias(mediaData);
 }
@@ -135,12 +135,15 @@ function sorting() {
 sortButton.addEventListener("change", sorting);
 
 
+// FONCTION CAROUSEL DE LA PAGE PHOTOGRAPHER
 let carouselItems = [];
 
 const previousButton = document.querySelector(".crochetGauche");
 previousButton.setAttribute("title", "Image précédente");
 const nextButton = document.querySelector(".crochetDroit");
 nextButton.setAttribute("title", "Image suivante");
+
+
 let currentItemPosition = 0;
 
 // Funcs

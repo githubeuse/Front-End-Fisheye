@@ -34,8 +34,6 @@ export function cardOfEachPhotographerTemplate(data) {
         const spanPrice = document.createElement ( 'span' );
         spanPrice.textContent = price +"€/jour";
 
-
-
         article.appendChild(link);
         article.appendChild(spanCity);
         article.appendChild(spanCountry); 
