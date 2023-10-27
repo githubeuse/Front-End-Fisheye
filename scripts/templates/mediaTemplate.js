@@ -83,11 +83,11 @@ export function mediaTemplate(data) {
         bottomLine.appendChild(rightContainer);
 
         const heartNextToTitle = document.createElement('i');
-        heartNextToTitle.setAttribute("class", "fa-regular fa-heart");
+        heartNextToTitle.setAttribute("class", "fa-regular fa-heart heartNextToTitle");
         heartNextToTitle.style.cursor = "pointer";
         heartNextToTitle.setAttribute("aria-label", "likes");
         heartNextToTitle.setAttribute("tabindex", "0");
-        rightContainer.appendChild(heartNextToTitle);
+        middleContainer.appendChild(heartNextToTitle);
         // incrémentation du nombre de likes 
 
 
@@ -120,7 +120,7 @@ export function mediaTemplate(data) {
             if (!heartNextToTitle.disabled) {
                 // Incrémentation du nombre de likes en dessous de chaque média
                 LikesForEachMedia.innerText = likes + 1;
-                heartNextToTitle.setAttribute("class", "fa-solid fa-heart");
+                heartNextToTitle.setAttribute("class", "fa-solid fa-heart heartNextToTitle");
 
                 // On rappelle la constante totalOfLikes ici, car on n'y a pas accès à la base
                 const totalOfLikes = document.querySelector("#totalOfLikes");

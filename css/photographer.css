@@ -93,6 +93,30 @@
 
 }
 
+.bottom-line {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #901C1C;
+
+}
+
+.leftContainer{
+    width: 100%;
+}
+
+.middle-container-mediaCard{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: baseline;
+}
+
+.heartNextToTitle{
+    padding-left: 5px;
+}
+
 .photograph-header {
     background-color: #FAFAFA;
     padding: 50px 30px;

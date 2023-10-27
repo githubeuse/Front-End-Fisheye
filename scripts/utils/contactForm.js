@@ -11,7 +11,7 @@ function launchDisplayModal() {
     firstInput.focus();
 
 }
-
+ 
 function hideMainSection() {
     const photographerBody = document.querySelector("#photographerBody");
     photographerBody.style.overflow = "hidden";

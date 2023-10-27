@@ -103,13 +103,6 @@ h1 {
     object-fit: cover;
 }
 
-.bottom-line {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #901C1C;
-
-}
 
 .rightContainer {
     display: flex;
