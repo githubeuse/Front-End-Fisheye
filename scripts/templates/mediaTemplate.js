@@ -1,6 +1,7 @@
 // Template des cards de medias, sur la page personnelle de chaque photographe
+import { closeCarousel } from "/scripts/pages/photographerPage.js";
 
-function mediaTemplate(data) {
+export function mediaTemplate(data) {
 
     const {
         id,
@@ -26,8 +27,8 @@ function mediaTemplate(data) {
                 const photographerImage = document.createElement('img');
                 photographerImage.setAttribute("src", photographerMedias);
                 photographerImage.setAttribute("class", "photographer-image");
-                photographerImage.setAttribute("alt", title);
                 photographerImage.setAttribute("alt", "Image de " + title);
+                photographerImage.setAttribute("aria-hidden", "false");
                 photographerImage.style.cursor = "pointer";
                 article.appendChild(photographerImage);
                 photographerImage.addEventListener("click", () => {
@@ -42,41 +43,6 @@ function mediaTemplate(data) {
                 photographerVideo.style.cursor = "pointer";
                 article.appendChild(photographerVideo);
 
-                /*photographerVideo.addEventListener("click", (event) => {
-                    /*event.preventDefault();
-                    const carouselContainer = document.querySelector(".carousel-container");
-                    carouselContainer.style.display = "flex";
-                    carouselContainer.setAttribute("aria-hidden", "false");
-
-                    const carousel = document.querySelector(".carousel");
-                    carousel.style.margin = "auto";
-
-                    const carouselHeader = document.querySelector(".carousel-header");
-                    carouselHeader.style.display = "flex";
-                    carouselHeader.style.justifyContent = "end";
-                    carouselHeader.innerHTML = "";
-
-                    const crossInCarouselHeader = document.querySelector("#crossInCarousel");
-                    crossInCarouselHeader.addEventListener("click", closeCarousel);
-
-                    const carouselVideoContainer = document.querySelector(".carousel-image-container");
-                    carouselVideoContainer.innerHTML = "";
-
-                    const videoInCarousel = document.createElement("video");
-                    videoInCarousel.setAttribute("src", photographerMedias);
-                    videoInCarousel.setAttribute("class", "imageInCarousel");
-                    videoInCarousel.setAttribute("controls", "true");
-                    carouselVideoContainer.appendChild(videoInCarousel);
-
-                    const titleInCarousel = document.createElement("span");
-                    titleInCarousel.setAttribute("class", "titleInCarousel");
-                    titleInCarousel.textContent = title;
-                    carouselImageContainer.appendChild(titleInCarousel);
-
-                    const photographerBody = document.querySelector("#photographerBody");
-                    photographerBody.setAttribute("aria-hidden", "true");
-                    photographerBody.style.overflow = "hidden";
-                });*/
             }
         }
         imgOrVideo(photographerMedias);
@@ -95,6 +61,7 @@ function mediaTemplate(data) {
         leftContainer.appendChild(imageTitle);
 
         const middleContainer = document.createElement('div');
+        middleContainer.setAttribute("class", "middle-container-mediaCard");
         bottomLine.appendChild(middleContainer);
 
         let LikesForEachMedia = document.createElement('span');
@@ -107,8 +74,8 @@ function mediaTemplate(data) {
         const heartNextToTitle = document.createElement('i');
         heartNextToTitle.setAttribute("class", "fa-regular fa-heart");
         heartNextToTitle.style.cursor = "pointer";
+        heartNextToTitle.setAttribute("aria-label", "likes");
         rightContainer.appendChild(heartNextToTitle);
-
         // incrémentation du nombre de likes 
 
         heartNextToTitle.addEventListener("click", () => {

@@ -1,3 +1,6 @@
+import { photographerTemplate } from "/scripts/templates/photographerTemplate.js";
+import { mediaTemplate } from "/scripts/templates/mediaTemplate.js";
+
 function getId() {
     let params = new URL(document.location).searchParams;
     let id = params.get("id");
@@ -16,6 +19,7 @@ async function getPhotographerDatas(id) {
     return photographer;
 }
 
+
 async function displayPhotographerDatas(photographer, media) {
     const photographersSection = document.querySelector(".photograph-header");
     const photographerModel = photographerTemplate(photographer, media);
@@ -24,18 +28,27 @@ async function displayPhotographerDatas(photographer, media) {
     photographersSection.appendChild(userCardDOM);
 }
 
+
+
+
+let mediaData;
+
 async function getPhotographerMedias(id) {
     const response = await fetch('data/photographers.json');
     const data = await response.json();
     const medias = data.media;
     const media = medias.filter(item => item.photographerId === parseInt(id));
+    mediaData = media;
+    console.log("mediaData===+>" + mediaData);
     return media;
 }
+
 
 
 async function displayPhotographerMedias(media) {
     const mediasSection = document.querySelector(".realisations");
     carouselItems = media;
+    mediasSection.innerHTML = "";
     media.forEach((med) => {
         const mediaModel = mediaTemplate(med);
         const mediaCardDom = mediaModel.getMediaCardDOM();
@@ -61,10 +74,73 @@ init();
 
 
 
+
+const sortButton = document.querySelector("#tri");
+
+function sorting() {
+    const sortButtonValue = sortButton.value;
+
+    switch (sortButtonValue) {
+        case "popularite":
+            console.log("p");
+            mediaData.sort((a, b) => {
+                const likesA = a.likes;
+                const likesB = b.likes;
+                if (likesA > likesB) {
+                    return -1;
+                }
+                if (likesA < likesB) {
+                    return 1;
+                }
+                return 0;
+            });
+            break;
+        case "date":
+            console.log("d");
+            mediaData.sort((a, b) => {
+                const dateA = a.date.toUpperCase();
+                const dateB = b.date.toUpperCase();
+                if (dateA < dateB) {
+                    return -1;
+                }
+                if (dateA > dateB) {
+                    return 1;
+                }
+                return 0;
+            });
+            break;
+
+        case "titre":
+            console.log("titre");
+            mediaData.sort((a, b) => {
+                const titleA = a.title.toUpperCase();
+                const titleB = b.title.toUpperCase();
+                if (titleA < titleB) {
+                    return -1;
+                }
+                if (titleA > titleB) {
+                    return 1;
+                }
+                return 0;
+            });
+            break;
+
+    }
+
+    // Maintenant que le tableau a été trié, vous pouvez l'afficher dans la console ou effectuer d'autres opérations avec les données triées.
+    console.log("mediaData après tri:", mediaData);
+    displayPhotographerMedias(mediaData);
+}
+
+sortButton.addEventListener("change", sorting);
+
+
 let carouselItems = [];
 
 const previousButton = document.querySelector(".crochetGauche");
+previousButton.setAttribute("title", "Image précédente");
 const nextButton = document.querySelector(".crochetDroit");
+nextButton.setAttribute("title", "Image suivante");
 let currentItemPosition = 0;
 
 // Funcs
@@ -96,6 +172,7 @@ const goToPreviousSlide = () => {
 }
 
 
+let carouselMediaContainer = document.querySelector(".carousel-media-container");
 const setNodeAttributes = (currentItem) => {
     carouselMediaContainer.innerHTML = "";
     if (currentItem.image) {
@@ -105,7 +182,7 @@ const setNodeAttributes = (currentItem) => {
         carouselMediaContainer.appendChild(carouselImage);
         console.log("currentItem ====>" + currentItem.image);
 
-    } else if (currentItem.video){
+    } else if (currentItem.video) {
         const carouselVideo = document.createElement('video');
         carouselVideo.setAttribute("src", `assets/images/${currentItem.video}`);
         carouselVideo.setAttribute("controls", "true");
@@ -116,7 +193,7 @@ const setNodeAttributes = (currentItem) => {
     titleInCarousel.setAttribute("class", "titleInCarousel");
     titleInCarousel.textContent = currentItem.title;
     carouselMediaContainer.appendChild(titleInCarousel);
-}    
+}
 
 // Events
 previousButton.addEventListener('click', () => {
@@ -136,11 +213,11 @@ document.addEventListener('keydown', function (e) {
     }
 });
 
-function closeCarousel(){
+export function closeCarousel() {
     const carouselContainer = document.querySelector(".carousel-container");
     carouselContainer.style.display = "none";
     const photographerBody = document.querySelector("#photographerBody");
-    photographerBody.style.overflow= "auto";
+    photographerBody.style.overflow = "auto";
 }
 
 //Mise en place touche escape pour fermer la modale
@@ -150,4 +227,4 @@ document.addEventListener('keydown', function (esc) {
     if (carouselContainer.getAttribute('aria-hidden') === 'false' && key === 'Escape') {
         closeCarousel();
     }
-}); 
+});

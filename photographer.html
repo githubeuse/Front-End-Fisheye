@@ -24,11 +24,16 @@
   <!--Présentation du photographe-->
   <main id="main">
     <div class="photograph-header">
-      <button class="contact_button" onclick="displayModal()" aria-label="Contact Me">Contactez-moi</button>
+      <button class="contact_button"  aria-label="Contact Me">Contactez-moi</button>
     </div>
     <!--Zone filtre-->
     <section class="filter">
-      <span>Trier par</span>
+      <label for="tri">Trier par</label>
+      <select id="tri" aria-label="Tri par">
+        <option value="popularite">Popularité</option>
+        <option value="date">Date</option>
+        <option value="titre">Titre</option>
+      </select>
     </section>
 
     <!--Pour afficher les réalisations-->
@@ -93,7 +98,7 @@
   </div>
 
   <!--Carrousel-->
-  <div class="carousel-container" role="dialog">
+  <div class="carousel-container" role="dialog" aria-label="image closeup view">
 
     <div class="carousel">
       <div class="left-part-header"> <i class="crochets crochetGauche fa-solid fa-less-than"></i> </div>
@@ -101,24 +106,24 @@
         <div class="carousel-header"></div>
         <div class="carousel-media-container"></div>
       </div>
-      <div class="right-part-header"> <i class="fa-solid fa-xmark" id="crossInCarousel"></i><i class="crochets crochetDroit fa-solid fa-greater-than"></i> </div>
+      <div class="right-part-header"> <i class="fa-solid fa-xmark" id="crossInCarousel" title="Fermer la fenêtre"></i><i class="crochets crochetDroit fa-solid fa-greater-than"></i> </div>
     </div>
   </div>
 
 
   <!--JS Utils-->
-  <script src="scripts/utils/contactForm.js"></script>
+  <script type="module" src="scripts/utils/contactForm.js"></script>
 
   <!--JS Templates-->
-  <script src="scripts/templates/photographerTemplate.js"></script>
-  <script src="scripts/templates/mediaTemplate.js"></script>
+  <script type="module" src="scripts/templates/photographerTemplate.js"></script>
+  <script type="module" src="scripts/templates/mediaTemplate.js"></script>
 
   <!--JS Pages-->
-  <script src="scripts/pages/photographerPage.js"></script>
+  <script type="module" src="scripts/pages/photographerPage.js"></script>
 
   <!--JS Factories-->
-  <script src="scripts/factories/MediaFactory.js"></script>
-  <script src="scripts/factories/PhotographerFactory.js"></script>
+  <script type="module" src="scripts/factories/MediaFactory.js"></script>
+  <script type="module" src="scripts/factories/PhotographerFactory.js"></script>
 
 
 

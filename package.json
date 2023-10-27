@@ -1,0 +1,6 @@
+{
+    "scripts": {
+    "dev": "http-server",
+    "lint": "eslint ./scripts/**/*.js"
+   }
+}

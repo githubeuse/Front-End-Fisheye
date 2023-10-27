@@ -1,6 +1,5 @@
 //Factory
-
-class Photographer{
+export class Photographer{
     constructor(photographers) {
         this._name = photographers.name;
         this._id = photographers.id ;

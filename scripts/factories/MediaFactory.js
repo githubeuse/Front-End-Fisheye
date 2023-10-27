@@ -1,6 +1,6 @@
 //FACTORY
 
-class Media {
+export class Media {
     constructor(media) {
         this._id = media.id;
         this._photographerId = media.photographerId;

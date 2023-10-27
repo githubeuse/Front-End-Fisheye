@@ -1,5 +1,5 @@
 //Template des cards pour chaque profil de photographe / sur la page index
-function cardOfEachPhotographerTemplate(data) {
+export function cardOfEachPhotographerTemplate(data) {
     const { name, portrait, city, country, tagline, price, id } = data;
 
     const picture = `assets/photographers/${portrait}`;

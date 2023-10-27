@@ -1,8 +1,7 @@
 //Template de la page personnelle de chaque photographe
 
 let totalLikes = 0;
-
-function photographerTemplate(data, medias) {
+export function photographerTemplate(data, medias) {
     const {
         name,
         portrait,
@@ -91,6 +90,6 @@ function photographerTemplate(data, medias) {
         tagline,
         price,
         id,
-        getUserCardDOM
+        getUserCardDOM,
     };
 }

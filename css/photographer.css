@@ -2,6 +2,11 @@
     display: none;
 }
 
+.middle-container-mediaCard{
+    display: flex;
+    justify-content: end;
+}
+
 .carousel-container{
     display: none;
     width: 100%;
@@ -96,6 +101,14 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.contact_button:focus,
+.bouton-envoyer:focus,
+.contact_button:hover,
+.bouton-envoyer:hover{
+    background-color: #D3573C;
+    color: white;
 }
 
 #contact_modal{
