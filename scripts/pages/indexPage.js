@@ -1,5 +1,5 @@
 //Pages 
-import { cardOfEachPhotographerTemplate } from "/scripts/templates/cardOfEachPhotographerTemplate.js";
+import { cardOfEachPhotographerTemplate } from "scripts/templates/cardOfEachPhotographerTemplate.js";
 
     async function getPhotographers() {
         const response = await fetch('data/photographers.json');
