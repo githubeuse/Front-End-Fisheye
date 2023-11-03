@@ -1,5 +1,5 @@
-import { photographerTemplate } from "/scripts/templates/photographerTemplate.js";
-import { mediaTemplate } from "/scripts/templates/mediaTemplate.js";
+import { photographerTemplate } from "../templates/photographerTemplate.js";
+import { mediaTemplate } from "../templates/mediaTemplate.js";
 
 //RECUP ET AFFICHAGE DES MEDIAS POUR CHAQUE PHOTOGRAPHE EN FONCTION DE SON ID
 
