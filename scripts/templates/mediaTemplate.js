@@ -1,7 +1,7 @@
 // Template des cards de medias, sur la page personnelle de chaque photographe
 import {
     closeCarousel
-} from "./scripts/pages/photographerPage.js";
+} from "scripts/pages/photographerPage.js";
 
 export function mediaTemplate(data) {
 
