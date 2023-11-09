@@ -1,5 +1,9 @@
-import { photographerTemplate } from "../templates/photographerTemplate.js";
-import { mediaTemplate } from "../templates/mediaTemplate.js";
+import {
+    photographerTemplate
+} from "../templates/photographerTemplate.js";
+import {
+    mediaTemplate
+} from "../templates/mediaTemplate.js";
 
 //RECUP ET AFFICHAGE DES MEDIAS POUR CHAQUE PHOTOGRAPHE EN FONCTION DE SON ID
 
@@ -213,6 +217,8 @@ document.addEventListener('keydown', function (e) {
         goToNextSlide();
     } else if (key === 'ArrowLeft') {
         goToPreviousSlide();
+    } else if (key === 'Escape') {
+        closeCarousel();
     }
 });
 
@@ -221,13 +227,14 @@ export function closeCarousel() {
     carouselContainer.style.display = "none";
     const photographerBody = document.querySelector("#photographerBody");
     photographerBody.style.overflow = "auto";
+
 }
 
 //Mise en place touche escape pour fermer la modale
-document.addEventListener('keydown', function (esc) {
+/*document.addEventListener('keydown', function (esc) {
     const key = esc.key;
     const carouselContainer = document.querySelector(".carousel-container");
     if (carouselContainer.getAttribute('aria-hidden') === 'false' && key === 'Escape') {
         closeCarousel();
     }
-});
+});*/

@@ -57,7 +57,7 @@
       <div id="bottomBarContainer">
         <div id="leftBottomBar">
           <span id="totalOfLikes"></span>
-          <i class="fa-solid fa-heart"></i>
+          <span class="fa-solid fa-heart"></span>
         </div>
         <div id="rightBottomBar">
         </div>
@@ -107,19 +107,30 @@
   <div class="carousel-container" role="dialog" aria-label="image closeup view">
 
     <div class="carousel">
-      <div class="left-part-header"> <i class="crochets crochetGauche fa-solid fa-less-than"></i> </div>
+      <div class="left-part-header"> <span class="crochets crochetGauche fa-solid fa-less-than"></span> </div>
       <div class="central-part-header">
         <div class="carousel-header"></div>
         <div class="carousel-media-container"></div>
       </div>
-      <div class="right-part-header"> <i class="fa-solid fa-xmark" id="crossInCarousel" title="Fermer la fenêtre"></i><i
-          class="crochets crochetDroit fa-solid fa-greater-than"></i> </div>
+      <div class="right-part-header"> <span class="fa-solid fa-xmark" id="crossInCarousel" title="Fermer la fenêtre"></span><span
+          class="crochets crochetDroit fa-solid fa-greater-than"></span> </div>
     </div>
   </div>
 
 
+  <!--JS Utils-->
+  <script type="module" src="./scripts/utils/contactForm.js"></script>
+
+  <!--JS Templates-->
+  <script type="module" src="./scripts/templates/photographerTemplate.js"></script>
+  <script type="module" src="./scripts/templates/mediaTemplate.js"></script>
+
   <!--JS Pages-->
   <script type="module" src="./scripts/pages/photographerPage.js"></script>
+
+  <!--JS Factories-->
+  <script type="module" src="./scripts/factories/MediaFactory.js"></script>
+  <script type="module" src="./scripts/factories/PhotographerFactory.js"></script>
 
 
 

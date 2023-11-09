@@ -37,11 +37,11 @@ export function mediaTemplate(data) {
                 photographerImage.style.cursor = "pointer";
                 link.appendChild(photographerImage);
                 photographerImage.addEventListener("click", () => {
-                    openLightBox(data);             
+                    openLightBox(data);
                 });
                 photographerImage.addEventListener("keyup", (event) => {
                     if (event.key === "Enter") {
-                    openLightBox(data);           
+                        openLightBox(data);
                     }
                 });
 
@@ -52,6 +52,14 @@ export function mediaTemplate(data) {
                 photographerVideo.setAttribute("controls", "true");
                 photographerVideo.style.cursor = "pointer";
                 link.appendChild(photographerVideo);
+                photographerVideo.addEventListener("click", () => {
+                    openLightBox(data);
+                });
+                photographerVideo.addEventListener("keyup", (event) => {
+                    if (event.key === "Enter") {
+                        openLightBox(data);
+                    }
+                });
             }
         }
         imgOrVideo(photographerMedias);
@@ -138,7 +146,6 @@ export function mediaTemplate(data) {
             }
         }
 
-        // Vous pouvez ensuite ajouter les écouteurs d'événements comme vous l'avez mentionné :
         heartNextToTitle.addEventListener("click", incrementeLesLikes);
         heartNextToTitle.addEventListener("keyup", (event) => {
             if (event.key === "Enter") {
@@ -207,4 +214,3 @@ function openLightBox(med) {
     photographerBody.style.overflow = "hidden";
 
 }
-
