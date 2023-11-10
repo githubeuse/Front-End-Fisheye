@@ -1,4 +1,4 @@
-//Factory Method pour Photographer
+//Factory Pattern pour Photographer
 export class Photographer{
     constructor(photographers) {
         this._name = photographers.name;
