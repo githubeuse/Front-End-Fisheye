@@ -1,23 +1,21 @@
+
 // Template des cards de medias, sur la page personnelle de chaque photographe
+import { Media } from "../factories/MediaFactory.js";
+
 import {
     closeCarousel
 } from "../pages/photographerPage.js";
 
+
+
 export function mediaTemplate(data) {
 
-    const {
-        id,
-        photographerId,
-        title,
-        image,
-        video,
-        likes,
-        date,
-        price
-    } = data;
+    const singleMedia = new Media(data);
+
+    //const { id, photographerId, title, image, video, likes, date, price} = data;
 
 
-    const photographerMedias = image ? `assets/images/${image}` : `assets/images/${video}`;
+    const photographerMedias = singleMedia.image ? `assets/images/${singleMedia.image}` : `assets/images/${singleMedia.video}`;
 
     function getMediaCardDOM() {
 
@@ -25,16 +23,16 @@ export function mediaTemplate(data) {
         article.setAttribute('class', 'article-media');
 
         const link = document.createElement("a");
-        link.setAttribute("aria-label", title);
+        link.setAttribute("aria-label", singleMedia.title);
 
         // Fonctionnalité d'affichage en fonction de vidéo ou image
         function imgOrVideo(photographerMedias) {
             //Si image
-            if (image) {
+            if (singleMedia.image) {
                 const photographerImage = document.createElement('img');
                 photographerImage.setAttribute("src", photographerMedias);
                 photographerImage.setAttribute("class", "photographer-image");
-                photographerImage.setAttribute("alt", "Image de " + title);
+                photographerImage.setAttribute("alt", "Image de " + singleMedia.title);
                 photographerImage.setAttribute("tabindex", "0");
                 photographerImage.style.cursor = "pointer";
                 link.appendChild(photographerImage);
@@ -52,7 +50,7 @@ export function mediaTemplate(data) {
                 });
 
             //si vidéo
-            } else if (video) {
+            } else if (singleMedia.video) {
                 const photographerVideo = document.createElement('video');
                 photographerVideo.setAttribute("src", photographerMedias);
                 photographerVideo.setAttribute("class", "photographer-video");
@@ -87,7 +85,7 @@ export function mediaTemplate(data) {
         leftContainer.setAttribute('class', "leftContainer");
         bottomLine.appendChild(leftContainer);
         const imageTitle = document.createElement('p');
-        imageTitle.textContent = title;
+        imageTitle.textContent = singleMedia.title;
         imageTitle.setAttribute("focusable", false);
         leftContainer.appendChild(imageTitle);
 
@@ -96,7 +94,7 @@ export function mediaTemplate(data) {
         middleContainer.setAttribute("class", "middle-container-mediaCard");
         bottomLine.appendChild(middleContainer);
         let LikesForEachMedia = document.createElement('span');
-        LikesForEachMedia.innerText = likes;
+        LikesForEachMedia.innerText = singleMedia.likes;
         middleContainer.appendChild(LikesForEachMedia);
 
         //Dans ligne basse : container droite avec le nombre de likes
@@ -113,7 +111,7 @@ export function mediaTemplate(data) {
         function incrementeLesLikes() {
             if (!heartNextToTitle.disabled) {
                 // Dans ligne basse card : Incrémentation du nombre de likes en dessous de chaque média
-                LikesForEachMedia.innerText = likes + 1;
+                LikesForEachMedia.innerText = singleMedia.likes + 1;
                 heartNextToTitle.setAttribute("class", "fa-solid fa-heart heartNextToTitle");
 
                 // Dans bottom bar de la page photographer.html : Incrémentation du nombre total de likes
@@ -142,9 +140,8 @@ export function mediaTemplate(data) {
 
         return article;
     }
-    return {
-        id, photographerId, title, image, video, likes, date, price, photographerMedias, getMediaCardDOM
-    };
+//    return { id, photographerId, title, image, video, likes, date, price, photographerMedias, getMediaCardDOM };
+        return { getMediaCardDOM };
 }
 
 
