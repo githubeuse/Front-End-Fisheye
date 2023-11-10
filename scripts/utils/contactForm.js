@@ -1,3 +1,6 @@
+//Fonctionnalité pour lancer la modale du formulaire
+
+//Affiche la modale
 function launchDisplayModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "flex";
@@ -11,7 +14,8 @@ function launchDisplayModal() {
     firstInput.focus();
 
 }
- 
+
+// Cache le body
 function hideMainSection() {
     const photographerBody = document.querySelector("#photographerBody");
     photographerBody.style.overflow = "hidden";
@@ -20,11 +24,13 @@ function hideMainSection() {
     mainSection.setAttribute("aria-hidden", "true");
 }
 
+// Lance les deux fonctionnalités précédentes => affiche la modale, cache le body
 function displayModal() {
     launchDisplayModal();
     hideMainSection();
 }
 
+// Fonctionnalité pour fermer la modale 
 function closeModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
@@ -36,11 +42,11 @@ function closeModal() {
 let contactButton = document.querySelector(".contact_button");
 contactButton.addEventListener("click", displayModal);
 
-//ajout de la fonction closeModal sur la croix de la modale
+// Fermeture de la modale lors du clic de la souris
 const crossInModalWindow = document.querySelector(".crossInModalWindow");
 crossInModalWindow.addEventListener("click", closeModal);
 
-//Mise en place touche escape pour fermer la modale
+// Fermeture de la modale lors de la saisie escape par navigation clavier
 document.addEventListener('keydown', function (e) {
     const key = e.key;
     const modal = document.getElementById("contact_modal");
@@ -57,5 +63,5 @@ boutonEnvoyer.addEventListener("click", function (event) {
     const nom = document.querySelector("#nom").value;
     const email = document.querySelector("#email").value;
     const message = document.querySelector("#message").value;
-    console.log("Données entrées par l'utilisateur : Prénom => " + prenom + ", Nom => " + nom + ", Email => " + email + ", Message => " + message);
+    console.log("Données entrées par l'utilisateur : Prénom => " + prenom + " |||| Nom => " + nom + " |||| Email => " + email + " |||| Message => " + message);
 });
