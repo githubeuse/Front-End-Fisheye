@@ -42,16 +42,16 @@ export function photographerTemplate(data, medias) {
         spanCity.setAttribute("class", "cityOfPhotographer");
         div1.appendChild(spanCity);
 
-        //Accroche du photographe
-        const pTagline = document.createElement('p');
-        pTagline.textContent = tagline;
-        div1.appendChild(pTagline);
-
         //Pays du photographe
         const spanCountry = document.createElement('span');
         spanCountry.textContent = country;
         spanCountry.setAttribute("class", "countryOfPhotographer");
         div1.appendChild(spanCountry);
+
+        //Accroche du photographe
+        const pTagline = document.createElement('p');
+        pTagline.textContent = tagline;
+        div1.appendChild(pTagline);
 
         //Dans l'entete, container avec bouton "contactez moi"
         const div2 = document.createElement('div');
