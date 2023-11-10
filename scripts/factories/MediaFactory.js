@@ -1,4 +1,4 @@
-//FACTORY
+//FACTORY PATTERN POUR MEDIA
 
 export class Media {
     constructor(media) {

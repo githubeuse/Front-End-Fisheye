@@ -16,6 +16,7 @@ export function mediaTemplate(data) {
         price
     } = data;
 
+
     const photographerMedias = image ? `assets/images/${image}` : `assets/images/${video}`;
 
     function getMediaCardDOM() {
@@ -26,8 +27,9 @@ export function mediaTemplate(data) {
         const link = document.createElement("a");
         link.setAttribute("aria-label", title);
 
-
+        // Fonctionnalité d'affichage en fonction de vidéo ou image
         function imgOrVideo(photographerMedias) {
+            //Si image
             if (image) {
                 const photographerImage = document.createElement('img');
                 photographerImage.setAttribute("src", photographerMedias);
@@ -36,15 +38,20 @@ export function mediaTemplate(data) {
                 photographerImage.setAttribute("tabindex", "0");
                 photographerImage.style.cursor = "pointer";
                 link.appendChild(photographerImage);
+
+                // lors du clic souris sur l'image
                 photographerImage.addEventListener("click", () => {
                     openLightBox(data);
                 });
+
+                // lors de la touche entrée sur l'image (navigation clavier)
                 photographerImage.addEventListener("keyup", (event) => {
                     if (event.key === "Enter") {
                         openLightBox(data);
                     }
                 });
 
+            //si vidéo
             } else if (video) {
                 const photographerVideo = document.createElement('video');
                 photographerVideo.setAttribute("src", photographerMedias);
@@ -52,9 +59,13 @@ export function mediaTemplate(data) {
                 photographerVideo.setAttribute("controls", "true");
                 photographerVideo.style.cursor = "pointer";
                 link.appendChild(photographerVideo);
+
+                // lors du clic souris sur la vidéo
                 photographerVideo.addEventListener("click", () => {
                     openLightBox(data);
                 });
+
+                // lors de la touche entrée sur la vidéo (navigation clavier)
                 photographerVideo.addEventListener("keyup", (event) => {
                     if (event.key === "Enter") {
                         openLightBox(data);
@@ -66,112 +77,78 @@ export function mediaTemplate(data) {
 
         article.appendChild(link);
 
+        // Ligne basse de la card : avec le titre, l'icone coeur et le nombre de likes par image
         const bottomLine = document.createElement('div');
         bottomLine.setAttribute('class', 'bottom-line');
         article.appendChild(bottomLine);
 
+        // Dans ligne basse : container de gauche : avec le titre
         const leftContainer = document.createElement('div');
         leftContainer.setAttribute('class', "leftContainer");
         bottomLine.appendChild(leftContainer);
-
         const imageTitle = document.createElement('p');
         imageTitle.textContent = title;
         imageTitle.setAttribute("focusable", false);
         leftContainer.appendChild(imageTitle);
 
+        // Dans ligne basse : container milieu avec l'icone coeur
         const middleContainer = document.createElement('div');
         middleContainer.setAttribute("class", "middle-container-mediaCard");
         bottomLine.appendChild(middleContainer);
-
         let LikesForEachMedia = document.createElement('span');
         LikesForEachMedia.innerText = likes;
         middleContainer.appendChild(LikesForEachMedia);
 
+        //Dans ligne basse : container droite avec le nombre de likes
         const rightContainer = document.createElement('div');
         bottomLine.appendChild(rightContainer);
-
         const heartNextToTitle = document.createElement('i');
         heartNextToTitle.setAttribute("class", "fa-regular fa-heart heartNextToTitle");
         heartNextToTitle.style.cursor = "pointer";
         heartNextToTitle.setAttribute("aria-label", "likes");
         heartNextToTitle.setAttribute("tabindex", "0");
         middleContainer.appendChild(heartNextToTitle);
+
         // incrémentation du nombre de likes 
-
-
-
-        /*        heartNextToTitle.addEventListener("click", () => {
-                    // si le coeur n'est pas disabled
-                    if (!heartNextToTitle.disabled) {
-                        // incrémentation du nombre de likes en dessous de chaque média
-                        LikesForEachMedia.innerText = likes + 1;
-                        heartNextToTitle.setAttribute("class", "fa-solid fa-heart");
-
-                        // on rappelle la constante totalOfLikes ici, car on n'y a pas accès à la base
-                        const totalOfLikes = document.querySelector("#totalOfLikes");
-
-                        // on fait passer le contenu du texte de totalOfLikes qui est dispo dans le DOM en integer, et on lui ajoute + 1
-                        const newTotal = parseInt(totalOfLikes.textContent) + 1;
-
-                        // on dit que le contenu de totalOfLikes est remplacé par le nouveau total
-                        totalOfLikes.textContent = newTotal;
-
-                        //on passe heartToTitle disabled à true
-                        heartNextToTitle.disabled = true;
-
-                        console.log(newTotal);
-                    }
-                });
-        */
-
         function incrementeLesLikes() {
             if (!heartNextToTitle.disabled) {
-                // Incrémentation du nombre de likes en dessous de chaque média
+                // Dans ligne basse card : Incrémentation du nombre de likes en dessous de chaque média
                 LikesForEachMedia.innerText = likes + 1;
                 heartNextToTitle.setAttribute("class", "fa-solid fa-heart heartNextToTitle");
 
-                // On rappelle la constante totalOfLikes ici, car on n'y a pas accès à la base
+                // Dans bottom bar de la page photographer.html : Incrémentation du nombre total de likes
                 const totalOfLikes = document.querySelector("#totalOfLikes");
-
                 // On fait passer le contenu du texte de totalOfLikes qui est disponible dans le DOM en tant qu'entier, et on lui ajoute +1
                 const newTotal = parseInt(totalOfLikes.textContent) + 1;
-
                 // On met à jour le contenu de totalOfLikes avec le nouveau total
                 totalOfLikes.textContent = newTotal;
 
-                // On passe heartToTitle.disabled à true
+                // On passe heartToTitle.disabled à true afin de ne pas pouvoir réitérer le like
                 heartNextToTitle.disabled = true;
 
-                console.log(newTotal);
+                // AFFICHAGE DU TOTAL DE NOMBRE DE LIKES DANS LA BOTTOM BAR DE LA PAGE PHOTOGRAPHER.HTML
+                //console.log(newTotal);
             }
         }
-
+        //Appel de la fonction incrementeLesLikes lors du clic souris sur l'icone coeur (ligne basse card media)
         heartNextToTitle.addEventListener("click", incrementeLesLikes);
+
+        //Idem que ci dessus, lors navigation clavier
         heartNextToTitle.addEventListener("keyup", (event) => {
             if (event.key === "Enter") {
                 incrementeLesLikes();
             }
         });
 
-
-
-
         return article;
     }
     return {
-        id,
-        photographerId,
-        title,
-        image,
-        video,
-        likes,
-        date,
-        price,
-        photographerMedias,
-        getMediaCardDOM
+        id, photographerId, title, image, video, likes, date, price, photographerMedias, getMediaCardDOM
     };
 }
 
+
+// Fonctionnalité pour afficher la lightbox
 const carouselMediaContainer = document.querySelector(".carousel-media-container");
 
 function openLightBox(med) {
@@ -214,3 +191,4 @@ function openLightBox(med) {
     photographerBody.style.overflow = "hidden";
 
 }
+

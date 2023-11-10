@@ -237,6 +237,7 @@ document.addEventListener('keydown', function (e) {
 //Fonctionnalité affichage carousel
 let carouselMediaContainer = document.querySelector(".carousel-media-container");
 const setNodeAttributes = (currentItem) => {
+    
     carouselMediaContainer.innerHTML = "";
 
     //Si format de currentItem est une image
