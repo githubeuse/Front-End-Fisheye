@@ -1,26 +1,36 @@
-//Pages 
-import { cardOfEachPhotographerTemplate } from "../templates/cardOfEachPhotographerTemplate.js";
+//Page index.html
+import {
+    cardOfEachPhotographerTemplate
+} from "../templates/cardOfEachPhotographerTemplate.js";
 
-    async function getPhotographers() {
-        const response = await fetch('data/photographers.json');
-        const photographers = await response.json();
-        return photographers;            
-    }
+// Fonctionnalité pour afficher les datas de chaque photographe sur la page index.html
 
-    async function displayData(photographers) {
-        const photographersSection = document.querySelector(".photographer_section");
+// Va chercher les datas des photographers
+async function getPhotographers() {
+    const response = await fetch('data/photographers.json');
+    const photographers = await response.json();
+    return photographers;
+}
 
-        photographers.forEach((photographer) => {
-            const photographerModel = cardOfEachPhotographerTemplate(photographer);
-            const userCardDOM = photographerModel.getUserCardDOM();
-            photographersSection.appendChild(userCardDOM);
-        });
-    }
+// Affiche les datas des photographers
+async function displayData(photographers) {
+    const photographersSection = document.querySelector(".photographer_section");
 
-    async function init() {
-        const { photographers } = await getPhotographers();
-        displayData(photographers);
-    }
-    
-    init();
-    
+    // Pour chaque photographe => création d'une card
+    photographers.forEach((photographer) => {
+        const photographerModel = cardOfEachPhotographerTemplate(photographer);
+        const userCardDOM = photographerModel.getUserCardDOM();
+        photographersSection.appendChild(userCardDOM);
+    });
+}
+
+// Affichage des datas en fonction des datas récupérées
+async function init() {
+    const {
+        photographers
+    } = await getPhotographers();
+    displayData(photographers);
+}
+
+// initiatilisation de la fonctionnalité
+init();
