@@ -1,6 +1,7 @@
 //Template de la page personnelle de chaque photographe
 
 let totalLikes = 0;
+
 export function photographerTemplate(data, medias) {
     const {
         name,
@@ -14,21 +15,19 @@ export function photographerTemplate(data, medias) {
 
     const picture = `assets/photographers/${portrait}`;
 
-    
+    // Fonctionnalité pour la Card en entête avec les informations de chaque photographe
+
     function getUserCardDOM() {
-        console.log(medias);
+        //AFFICHE LES MEDIAS
+        //console.log(medias);
         const article = document.createElement('article');
         article.setAttribute("class", "photographer_presentation");
 
+        //Dans l'entete, container avec nom, prénom, accroche du photographe
         const div1 = document.createElement('div');
         article.appendChild(div1);
 
-        const div2 = document.createElement('div');
-        article.appendChild(div2);
-
-        const div3 = document.createElement('div');
-        article.appendChild(div3);
-
+        //Nom du photographe
         const h1 = document.createElement('h1');
         h1.textContent = name;
         h1.setAttribute("focusable", true);
@@ -37,50 +36,61 @@ export function photographerTemplate(data, medias) {
         h1.setAttribute("class", "nameOfPhotographer");
         div1.appendChild(h1);
 
+        //Ville du photographe
         const spanCity = document.createElement('span');
         spanCity.textContent = city + ", ";
         spanCity.setAttribute("class", "cityOfPhotographer");
         div1.appendChild(spanCity);
 
+        //Accroche du photographe
+        const pTagline = document.createElement('p');
+        pTagline.textContent = tagline;
+        div1.appendChild(pTagline);
+
+        //Pays du photographe
         const spanCountry = document.createElement('span');
         spanCountry.textContent = country;
         spanCountry.setAttribute("class", "countryOfPhotographer");
         div1.appendChild(spanCountry);
 
-        const pTagline = document.createElement('p');
-        pTagline.textContent = tagline;
-        div1.appendChild(pTagline);
+        //Dans l'entete, container avec bouton "contactez moi"
+        const div2 = document.createElement('div');
+        article.appendChild(div2);
 
         const contactButton = document.querySelector(".contact_button");
         //contactButton.style.display = "block";
         div2.appendChild(contactButton);
 
+        //Dans l'entete, container avec photo du photographe
+        const div3 = document.createElement('div');
+        article.appendChild(div3);
+
+        //Portrait du photographe
         const img = document.createElement('img');
         img.setAttribute("src", picture);
         img.setAttribute("alt", name);
         img.setAttribute("class", "profile_picture");
         div3.appendChild(img);
 
+        //Dans la bottombar (à droite, en bas) : tarif du photographe
         const rightBottomBar = document.querySelector("#rightBottomBar");
         rightBottomBar.innerText = price + "€ / jour ";
 
+        //Dans la modale du formulaire => le nom du photographe
         const h1InModalWindow = document.querySelector('.h1InModalWindow');
-
         const nameInModalWindow = document.createElement('h2');
         nameInModalWindow.innerText = name;
         nameInModalWindow.setAttribute("class", "nameInModalWindow");
         h1InModalWindow.appendChild(nameInModalWindow);
 
-
-
-        // nombre de likes total dans le bandeau en bas de page
+        //Dans la bottombar (à droite, en bas) : mise à jour du nombre de likes total en fonction des like sur chaque image
         medias.forEach(media => {
             totalLikes += media.likes;
         });
-
         const totalOfLikes = document.querySelector("#totalOfLikes");
         totalOfLikes.innerText = totalLikes;
-        console.log(totalLikes);
+        //AFFICHAGE DES LIKES TOTAL
+        //console.log(totalLikes);
 
         return (article);
     }
