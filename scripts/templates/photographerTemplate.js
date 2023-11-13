@@ -51,6 +51,7 @@ export function photographerTemplate(data, medias) {
         //Accroche du photographe
         const pTagline = document.createElement('p');
         pTagline.textContent = tagline;
+        pTagline.setAttribute("class", "pTagline");
         div1.appendChild(pTagline);
 
         //Dans l'entete, container avec bouton "contactez moi"
