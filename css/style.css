@@ -20,6 +20,7 @@ h1 {
 
 .logo {
     height: 50px;
+    margin-top: 40px;
 }
 
 .photographer_section {
@@ -77,6 +78,11 @@ h1 {
     object-fit: cover;
 }
 
+.profile_picture {
+    height: 240px;
+    width: 240px;
+}
+
 .photographer_presentation {
     display: flex;
     flex-direction: row;
@@ -98,21 +104,14 @@ h1 {
 .realisations {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 50px;
     margin-top: 20px;
-
-
-
-    /*display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 2em;
-    margin: 0 100px;
-    max-width: 1800px;*/
 }
 
 .photographer-image,
 .photographer-video {
-    height: 50vh;
+    height: 45vh;
     width: 100%;
     object-fit: cover;
 }
