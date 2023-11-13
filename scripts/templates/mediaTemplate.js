@@ -1,6 +1,7 @@
-
 // Template des cards de medias, sur la page personnelle de chaque photographe
-import { Media } from "../factories/MediaFactory.js";
+import {
+    Media
+} from "../factories/MediaFactory.js";
 
 import {
     closeCarousel
@@ -12,9 +13,6 @@ export function mediaTemplate(data) {
 
     const singleMedia = new Media(data);
 
-    //const { id, photographerId, title, image, video, likes, date, price} = data;
-
-
     const photographerMedias = singleMedia.image ? `assets/images/${singleMedia.image}` : `assets/images/${singleMedia.video}`;
 
     function getMediaCardDOM() {
@@ -23,7 +21,7 @@ export function mediaTemplate(data) {
         article.setAttribute('class', 'article-media');
 
         const link = document.createElement("a");
-        link.setAttribute("aria-label", singleMedia.title);
+        
 
         // Fonctionnalité d'affichage en fonction de vidéo ou image
         function imgOrVideo(photographerMedias) {
@@ -35,6 +33,7 @@ export function mediaTemplate(data) {
                 photographerImage.setAttribute("alt", "Image de " + singleMedia.title);
                 photographerImage.setAttribute("tabindex", "0");
                 photographerImage.style.cursor = "pointer";
+                photographerImage.setAttribute("aria-label", singleMedia.title);
                 link.appendChild(photographerImage);
 
                 // lors du clic souris sur l'image
@@ -49,12 +48,13 @@ export function mediaTemplate(data) {
                     }
                 });
 
-            //si vidéo
-            } else if (singleMedia.video) {
+                //si vidéo
+            } else if (singleMedia.video) { 
                 const photographerVideo = document.createElement('video');
                 photographerVideo.setAttribute("src", photographerMedias);
                 photographerVideo.setAttribute("class", "photographer-video");
                 photographerVideo.setAttribute("controls", "true");
+                photographerVideo.setAttribute("aria-label", singleMedia.title);
                 photographerVideo.style.cursor = "pointer";
                 link.appendChild(photographerVideo);
 
@@ -71,9 +71,12 @@ export function mediaTemplate(data) {
                 });
             }
         }
+        article.appendChild(link);
+
         imgOrVideo(photographerMedias);
 
-        article.appendChild(link);
+
+
 
         // Ligne basse de la card : avec le titre, l'icone coeur et le nombre de likes par image
         const bottomLine = document.createElement('div');
@@ -140,8 +143,10 @@ export function mediaTemplate(data) {
 
         return article;
     }
-//    return { id, photographerId, title, image, video, likes, date, price, photographerMedias, getMediaCardDOM };
-        return { getMediaCardDOM };
+    //    return { id, photographerId, title, image, video, likes, date, price, photographerMedias, getMediaCardDOM };
+    return {
+        getMediaCardDOM
+    };
 }
 
 
@@ -188,4 +193,3 @@ function openLightBox(med) {
     photographerBody.style.overflow = "hidden";
 
 }
-
