@@ -111,7 +111,7 @@ h1 {
 
 .photographer-image,
 .photographer-video {
-    height: 45vh;
+    height: 48vh;
     width: 100%;
     object-fit: cover;
 }
