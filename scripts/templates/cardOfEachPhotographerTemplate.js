@@ -10,6 +10,7 @@ export function cardOfEachPhotographerTemplate(data) {
     function getUserCardDOM() {
 
         const article = document.createElement( 'article' );
+        
 
         //Ajout d'un lien sur chaque card pointant vers l'url  + id du photographe
         const link = document.createElement('a');
@@ -28,27 +29,29 @@ export function cardOfEachPhotographerTemplate(data) {
         h2.textContent = photographe.name;
         h2.setAttribute("focusable", true);
         link.appendChild(h2);
+
+        const containerCityAndCountry = document.createElement ('div');
+        containerCityAndCountry.setAttribute("class", "containerCityAndCountry");
+        article.appendChild(containerCityAndCountry);
         
         //Ajout de la ville à la card
         const spanCity = document.createElement ( 'span' );
-        spanCity.textContent = photographe._city;
-        article.appendChild(spanCity);
-
+        spanCity.textContent = photographe._city + ", ";
+        containerCityAndCountry.appendChild(spanCity);
 
         //Ajout du pays à la card
         const spanCountry = document.createElement ( 'span' );
         spanCountry.textContent = photographe.country;
-        article.appendChild(spanCountry); 
-
+        containerCityAndCountry.appendChild(spanCountry); 
 
         //Ajout de l'accroche à la card
         const spanTagline = document.createElement ( 'span' );
         spanTagline.textContent = photographe.tagline;
         article.appendChild(spanTagline);
 
-
         //Ajout du prix à la card 
         const spanPrice = document.createElement ( 'span' );
+        spanPrice.setAttribute("class", "priceCardOnIndexPage");
         spanPrice.textContent = photographe.price +"€/jour";
         article.appendChild(spanPrice);
 
