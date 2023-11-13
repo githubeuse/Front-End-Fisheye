@@ -24,7 +24,11 @@ export class Media {
     }
 
     get image(){
-        return this._image
+        return this._image;
+    }
+
+    get video(){
+        return this._video;
     }
 
     get likes(){
