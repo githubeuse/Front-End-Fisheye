@@ -115,8 +115,9 @@
 }
 
 .leftContainer p {
-    font-size: 1.5em;
+    font-size: 2em;
     margin-block-start: 0px;
+    margin-block-end: 0em;
 }
 
 .middle-container-mediaCard{
