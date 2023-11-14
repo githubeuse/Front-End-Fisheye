@@ -218,6 +218,8 @@ export function closeCarousel() {
     const photographerBody = document.querySelector("#photographerBody");
     photographerBody.style.overflow = "auto";
 
+    const photographerMain = document.querySelector("#main");
+    photographerMain.style.display= "block";
 }
 
 // Navigation au clavier : précédente, suivante, fermer
