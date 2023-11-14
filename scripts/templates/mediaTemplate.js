@@ -192,4 +192,6 @@ function openLightBox(med) {
     photographerBody.setAttribute("aria-hidden", "true");
     photographerBody.style.overflow = "hidden";
 
+    const photographerMain = document.querySelector("#main");
+    photographerMain.style.display= "none";
 }
