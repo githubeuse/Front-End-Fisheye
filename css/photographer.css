@@ -90,10 +90,11 @@
 
 .imageInCarousel,
 .videoInCarousel {
-    width: 90vw;
+    width: 80vw;
     height: 90vh;
     padding: 0.5em;
     object-fit: cover;
+    object-position: top;
 }
 
 .titleInCarousel {
@@ -184,7 +185,7 @@
 }
 
 #contact_modal {
-    top: 20px;
+    top: 10px;
 }
 
 .hidden {
@@ -202,7 +203,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 35px;
+    padding: 25px;
     width: 50%;
     margin: auto;
 }
@@ -267,7 +268,7 @@ form input {
 
 form textarea {
     border-radius: 5px;
-    height: 150px;
+    height: 60px;
 }
 
 .message {
@@ -298,16 +299,12 @@ form textarea {
         width: 35%;
     }
 
-    #contact_modal {
-        top: 10px;
-    }
-
     .modal-header h1,
     .modal-header h2 {
         font-size: 40px;
     }
 
     form textarea {
-        height: 80px;
+        height: 30px;
     }
 }
