@@ -13,6 +13,11 @@ function launchDisplayModal() {
     const firstInput = document.querySelector("#prenom");
     firstInput.focus();
 
+    const main = document.querySelector("#main");
+    main.style.opacity = 0.5;
+
+    const logo = document.querySelector(".logo");
+    logo.style.opacity = 0.5;
 }
 
 // Cache le body
@@ -37,6 +42,11 @@ function closeModal() {
 
     const mainSection = document.querySelector("#main");
     mainSection.setAttribute("aria-hidden", "false");
+    mainSection.style.opacity = 1;
+
+    const logo = document.querySelector(".logo");
+    logo.style.opacity = 1;
+
 }
 
 let contactButton = document.querySelector(".contact_button");
