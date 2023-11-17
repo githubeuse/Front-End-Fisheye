@@ -1,3 +1,13 @@
+/* CLASSE HIDDEN */
+.hidden {
+    height: 1px;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: -10000px;
+    width: 1px;
+}
+
 
 body {
     font-family: "DM Sans", sans-serif;
@@ -23,6 +33,31 @@ h1 {
     height: 50px;
     margin-top: 40px;
 }
+
+/* BOUTONS ENVOYER ET CONTACTEZ MOI*/
+.contact_button,
+.bouton-envoyer {
+    font-size: 23px;
+    font-weight: 600;
+    color: white;
+    padding: 11px;
+    width: 200px;
+    height: 70px;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* BOUTONS ENVOYER ET CONTACTEZ MOI LORS DU SURVOL ET FOCUS*/ 
+.contact_button:focus,
+.bouton-envoyer:focus,
+.contact_button:hover,
+.bouton-envoyer:hover {
+    background-color: #D3573C;
+    color: white;
+}
+
 
 /*PAGE INDEX : SECTION AVEC TOUTES LES CARDS DE CHAQUE PHOTOGRAPHE*/
 .photographer_section {
@@ -100,13 +135,43 @@ h1 {
     object-fit: cover;
 }
 
-/* PAGE PHOTOGRAPHER : header et présentation du photographe */
+/* PAGE PHOTOGRAPHER : section contenant le header avec les infos sur le photographe */
 .photographer_presentation {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     gap: 10px;
+}
+
+/* PAGE PHOTOGRAPHER : header avec les informations du photographe */
+.photograph-header {
+    background-color: #FAFAFA;
+    padding: 40px 50px;
+    margin-top: 40px;
+}
+
+/* PAGE PHOTOGRAPHER : dans le header, le nom du photographe */
+.nameOfPhotographer {
+    color: #D3573C;
+    font-size: 4.5em;
+    font-weight: 200;
+    margin-block-end: 0.2em;
+    margin-block-start: 0em;
+}
+
+/* PAGE PHOTOGRAPHER : dans le header, nom et ville*/
+.cityOfPhotographer,
+.countryOfPhotographer {
+    color: #901C1C;
+    font-size: 1.5em;
+}
+
+/* PAGE PHOTOGRAPHER : dans le header, citation du photographe*/
+.pTagline {
+    color: #525252;
+    font-size: 1.1em;
+    margin-block-end: 0em;
 }
 
 
@@ -140,10 +205,6 @@ h1 {
     gap: 10px;
 }
 
-/* PAGE PHOTOGRAPHER : modale du formulaire*/
-#contact_modal {
-    display: none;
-}
 
 /*PAGE PHOTOGRAPHER : stylisation du label de select tri*/
 #label-tri{
@@ -224,7 +285,7 @@ h1 {
     flex-direction: column;
 }
 
-/* PAGE */ 
+/* PAGE PHOTOGRAPHER / CAROUSEL Container du média*/ 
 .carousel-media-container {
     width: 90%;
     height: 90%;
@@ -232,6 +293,7 @@ h1 {
     flex-direction: column;
 }
 
+/* PAGE PHOTOGRAPHER / CAROUSEL image et vidéo */
 .imageInCarousel,
 .videoInCarousel {
     width: 80vw;
@@ -241,11 +303,14 @@ h1 {
     object-position: top;
 }
 
+/* PAGE PHOTOGRAPHER / CAROUSEL texte à l'intérieur*/ 
 .titleInCarousel {
     color: #901C1C;
 
 }
 
+/* PAGE PHOTOGRAPHER - Ligne basse de chaque card média : avec le titre, l'icone coeur et le nombre de likes par image
+*/
 .bottom-line {
     width: 100%;
     display: flex;
@@ -255,16 +320,19 @@ h1 {
     padding-top: 0px;
 }
 
+/* PAGE PHOTOGRAPHER - zone gauche de la ligne basse de chaque card média avec le titre*/
 .leftContainer{
     width: 100%;
 }
 
+/* PAGE PHOTOGRAPHER - Titre dans la zone gauche de la ligne basse de chaque card média*/
 .leftContainer p {
     font-size: 2em;
     margin-block-start: 0px;
     margin-block-end: 0em;
 }
 
+/* PAGE PHOTOGRAPHER - Zone milieu qui contient le coeur dans la ligne basse de chaque card média*/
 .middle-container-mediaCard{
     width: 20%;
     padding-top: 3px;
@@ -273,74 +341,25 @@ h1 {
     align-items: baseline;
 }
 
+/* PAGE PHOTOGRAPHER - Coeur dans la ligne basse de chaque card média*/
 .heartNextToTitle{
     padding-left: 5px;
     font-size: 1.3em;
 }
 
-.photograph-header {
-    background-color: #FAFAFA;
-    padding: 40px 50px;
-    margin-top: 40px;
-}
-
-.nameOfPhotographer {
-    color: #D3573C;
-    font-size: 4.5em;
-    font-weight: 200;
-    margin-block-end: 0.2em;
-    margin-block-start: 0em;
-}
-
-.cityOfPhotographer,
-.countryOfPhotographer {
-    color: #901C1C;
-    font-size: 1.5em;
-}
-
-.pTagline {
-    color: #525252;
-    font-size: 1.1em;
-    margin-block-end: 0em;
-}
 
 
 
-.contact_button,
-.bouton-envoyer {
-    font-size: 23px;
-    font-weight: 600;
-    color: white;
-    padding: 11px;
-    width: 200px;
-    height: 70px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
-}
 
-.contact_button:focus,
-.bouton-envoyer:focus,
-.contact_button:hover,
-.bouton-envoyer:hover {
-    background-color: #D3573C;
-    color: white;
-}
 
+
+/* CONTAINER DE LA MODALE DU FORMULAIRE*/
 #contact_modal {
+    display: none;
     top: 10px;
 }
 
-.hidden {
-    height: 1px;
-    left: 0;
-    overflow: hidden;
-    position: absolute;
-    top: -10000px;
-    width: 1px;
-}
-
+/* MODALE DU FORMULAIRE*/
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
@@ -352,6 +371,7 @@ h1 {
     margin: auto;
 }
 
+/* HEADER DU FORMULAIRE */
 .modal-header {
     width: 100%;
     display: flex;
@@ -361,11 +381,7 @@ h1 {
     margin-bottom: 50px;
 }
 
-
-.modal header img {
-    cursor: pointer;
-}
-
+/* "CONTACTEZ MOI" + NOM DANS MODALE  */
 .h1InModalWindow,
 .nameInModalWindow {
     font-size: 50px;
@@ -378,11 +394,13 @@ h1 {
 
 }
 
+/* CROIX DANS LA MODALE */
 .crossInModalWindow {
     margin-top: 20px;
     cursor: pointer;
 }
 
+/* CHAMPS DE FORMULAIRE DANS LA MODALE*/
 form {
     display: flex;
     width: 100%;
@@ -390,11 +408,13 @@ form {
     align-items: flex-start;
 }
 
+/* LABEL DANS LE FORMULAIRE DANS LA MODALE */
 form label {
     color: #312E2E;
     font-size: 36px;
 }
 
+/* DIV A L INTERIEUR DU FORMULAIRE*/
 form div {
     display: flex;
     flex-direction: column;
@@ -403,6 +423,7 @@ form div {
     margin-bottom: 26px;
 }
 
+/* INPUT DANS LE FORMULAIRE  */
 form input {
     width: 100%;
     height: 68px;
@@ -410,16 +431,19 @@ form input {
     border-radius: 5px;
 }
 
+/* TEXTAREA DANS LE FORMULAIRE*/
 form textarea {
     border-radius: 5px;
     height: 60px;
 }
 
+/* ZONE DE MESSAGE DANS LE FORMULAIRE */
 .message {
     width: 100%;
     resize: none;
 }
 
+/* container de la BOTTOM BAR SUR LA PAGE PHOTOGRAPHER AVEC PRIX ET LIKES TOTAUX*/
 #bottomBarContainer {
     width: 20%;
     display: flex;
@@ -432,28 +456,13 @@ form textarea {
     right: 20px;
     font-size: 1.5em;
 }
-
+/*BOTTOM BAR SUR LA PAGE PHOTOGRAPHER AVEC PRIX ET LIKES TOTAUX*/
 #bottom-bar {
     width: 100%;
 
 }
 
-@media screen and (max-width: 1280px) {
-    #bottomBarContainer {
-        width: 35%;
-    }
-
-    .modal-header h1,
-    .modal-header h2 {
-        font-size: 40px;
-    }
-
-    form textarea {
-        height: 30px;
-    }
-}
-
-
+/* MEDIA QUERIES POUR LES ECRANS JUSQUE 1280 PX */
 @media screen and (max-width: 1280px) {
 
     .profile_picture {
@@ -486,8 +495,22 @@ form textarea {
         height: 250px;
     }
 
+    #bottomBarContainer {
+        width: 35%;
+    }
+
+    .modal-header h1,
+    .modal-header h2 {
+        font-size: 40px;
+    }
+
+    form textarea {
+        height: 30px;
+    }
+
 }
 
+/* MEDIA QUERIES POUR LES ECRANS JUSQUE 768 PX*/
 @media screen and (max-width: 768px) {
     body {
         margin: 20px;
