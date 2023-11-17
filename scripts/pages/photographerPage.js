@@ -103,7 +103,7 @@ function sorting() {
     switch (sortButtonValue) {
         //Cas tri par popularité
         case "popularite":
-            console.log("p");
+            console.log("Tri par popularité/nombre de likes des photos ci-dessous");
             mediaData.sort((a, b) => {
                 const likesA = a.likes;
                 const likesB = b.likes;
@@ -118,7 +118,7 @@ function sorting() {
             break;
         //Cas tri par date    
         case "date":
-            console.log("d");
+            console.log("Tri par date ou ordre chronologique des photos ci-dessous");
             mediaData.sort((a, b) => {
                 const dateA = a.date.toUpperCase();
                 const dateB = b.date.toUpperCase();
@@ -133,7 +133,7 @@ function sorting() {
             break;
         //Cas tri par titre de photos
         case "titre":
-            console.log("titre");
+            console.log("Tri alphabétique des titres de photos ci-dessous");
             mediaData.sort((a, b) => {
                 const titleA = a.title.toUpperCase();
                 const titleB = b.title.toUpperCase();
@@ -149,7 +149,7 @@ function sorting() {
 
     }
     //AFFICHE LES MEDIAS APRES LE TRI
-    //console.log("mediaData après tri:", mediaData);
+    console.log("mediaData après tri:", mediaData);
 
     displayPhotographerMedias(mediaData);
 }

@@ -10,24 +10,23 @@ export function cardOfEachPhotographerTemplate(data) {
     function getUserCardDOM() {
 
         const article = document.createElement( 'article' );
-        
 
         //Ajout d'un lien sur chaque card pointant vers l'url  + id du photographe
         const link = document.createElement('a');
         link.setAttribute('href', 'photographer.html?id='+ photographe.id);
         link.setAttribute('title', 'Lien vers la fiche de ' + photographe.name);
+        link.setAttribute("focusable", true);
         article.appendChild(link);
 
         //Ajout de l'image à la card 
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
-        img.setAttribute("alt", "Photo de " + photographe.name);
+        img.setAttribute("alt", "");
         link.appendChild(img);
         
         //Ajout du nom à la card
         const h2 = document.createElement( 'h2' );
         h2.textContent = photographe.name;
-        h2.setAttribute("focusable", true);
         link.appendChild(h2);
 
         const containerCityAndCountry = document.createElement ('div');
@@ -35,22 +34,22 @@ export function cardOfEachPhotographerTemplate(data) {
         article.appendChild(containerCityAndCountry);
         
         //Ajout de la ville à la card
-        const spanCity = document.createElement ( 'span' );
-        spanCity.textContent = photographe._city + ", ";
+        const spanCity = document.createElement ( 'p' );
+        spanCity.textContent = photographe._city;
         containerCityAndCountry.appendChild(spanCity);
 
         //Ajout du pays à la card
-        const spanCountry = document.createElement ( 'span' );
-        spanCountry.textContent = photographe.country;
+        const spanCountry = document.createElement ( 'p' );
+        spanCountry.textContent = ", " + photographe.country;
         containerCityAndCountry.appendChild(spanCountry); 
 
         //Ajout de l'accroche à la card
-        const spanTagline = document.createElement ( 'span' );
+        const spanTagline = document.createElement ( 'p' );
         spanTagline.textContent = photographe.tagline;
         article.appendChild(spanTagline);
 
         //Ajout du prix à la card 
-        const spanPrice = document.createElement ( 'span' );
+        const spanPrice = document.createElement ( 'p' );
         spanPrice.setAttribute("class", "priceCardOnIndexPage");
         spanPrice.textContent = photographe.price +"€/jour";
         article.appendChild(spanPrice);
