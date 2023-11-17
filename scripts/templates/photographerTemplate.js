@@ -1,4 +1,4 @@
-//Template du header de chaque page personnelle de photographe
+//Template de la page personnelle de chaque photographe
 
 let totalLikes = 0;
 
@@ -28,13 +28,13 @@ export function photographerTemplate(data, medias) {
         article.appendChild(div1);
 
         //Nom du photographe
-        const h2 = document.createElement('h2');
-        h2.textContent = name;
-        h2.setAttribute("focusable", true);
-        h2.setAttribute("tabindex", "0");
-        h2.setAttribute("aria-hidden", false);
-        h2.setAttribute("class", "nameOfPhotographer");
-        div1.appendChild(h2);
+        const h1 = document.createElement('h1');
+        h1.textContent = name;
+        h1.setAttribute("focusable", true);
+        h1.setAttribute("tabindex", "0");
+        h1.setAttribute("aria-hidden", false);
+        h1.setAttribute("class", "nameOfPhotographer");
+        div1.appendChild(h1);
 
         //Ville du photographe
         const spanCity = document.createElement('span');
