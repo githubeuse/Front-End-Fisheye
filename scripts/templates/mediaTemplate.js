@@ -1,7 +1,8 @@
 // Template des cards de medias, sur la page personnelle de chaque photographe
 import {
-    Media
+    MediaFactory
 } from "../factories/MediaFactory.js";
+
 
 import {
     closeCarousel
@@ -10,22 +11,17 @@ import {
 
 
 export function mediaTemplate(data) {
-
-    const singleMedia = new Media(data);
-
+    const singleMedia = new MediaFactory(data, openLightBox);
+    
     const photographerMedias = singleMedia.image ? `assets/images/${singleMedia.image}` : `assets/images/${singleMedia.video}`;
 
     function getMediaCardDOM() {
-
         const article = document.createElement('article');
         article.setAttribute('class', 'article-media');
 
         const link = document.createElement("a");
-        
 
-        // Fonctionnalité d'affichage en fonction de vidéo ou image
         function imgOrVideo(photographerMedias) {
-            //Si image
             if (singleMedia.image) {
                 const photographerImage = document.createElement('img');
                 photographerImage.setAttribute("src", photographerMedias);
@@ -36,20 +32,16 @@ export function mediaTemplate(data) {
                 photographerImage.setAttribute("aria-label", singleMedia.title);
                 link.appendChild(photographerImage);
 
-                // lors du clic souris sur l'image
                 photographerImage.addEventListener("click", () => {
-                    openLightBox(data);
+                    singleMedia.openLightBox(data);
                 });
 
-                // lors de la touche entrée sur l'image (navigation clavier)
                 photographerImage.addEventListener("keyup", (event) => {
                     if (event.key === "Enter") {
-                        openLightBox(data);
+                        singleMedia.openLightBox(data);
                     }
                 });
-
-                //si vidéo
-            } else if (singleMedia.video) { 
+            } else if (singleMedia.video) {
                 const photographerVideo = document.createElement('video');
                 photographerVideo.setAttribute("src", photographerMedias);
                 photographerVideo.setAttribute("class", "photographer-video");
@@ -57,21 +49,18 @@ export function mediaTemplate(data) {
                 photographerVideo.style.cursor = "pointer";
                 link.appendChild(photographerVideo);
 
-                // lors du clic souris sur la vidéo
                 photographerVideo.addEventListener("click", () => {
-                    openLightBox(data);
+                    singleMedia.openLightBox(data);
                 });
 
-                // lors de la touche entrée sur la vidéo (navigation clavier)
                 photographerVideo.addEventListener("keyup", (event) => {
                     if (event.key === "Enter") {
-                        openLightBox(data);
+                        singleMedia.openLightBox(data);
                     }
                 });
             }
         }
         article.appendChild(link);
-
         imgOrVideo(photographerMedias);
 
 
@@ -194,5 +183,5 @@ function openLightBox(med) {
     photographerBody.style.overflow = "hidden";
 
     const photographerMain = document.querySelector("#main");
-    photographerMain.style.display= "none";
+    photographerMain.style.display = "none";
 }
