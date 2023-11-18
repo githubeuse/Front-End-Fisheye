@@ -53,7 +53,6 @@ export function mediaTemplate(data) {
                 const photographerVideo = document.createElement('video');
                 photographerVideo.setAttribute("src", photographerMedias);
                 photographerVideo.setAttribute("class", "photographer-video");
-                photographerVideo.setAttribute("controls", "true");
                 photographerVideo.setAttribute("aria-label", singleMedia.title);
                 photographerVideo.style.cursor = "pointer";
                 link.appendChild(photographerVideo);
