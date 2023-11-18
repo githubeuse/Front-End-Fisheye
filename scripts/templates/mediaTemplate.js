@@ -173,13 +173,14 @@ function openLightBox(med) {
         mediaElement = imageInCarousel;
         imageInCarousel.setAttribute("src", photographerMedias);
         imageInCarousel.setAttribute("class", "imageInCarousel");
+        imageInCarousel.setAttribute("alt", med.title);
         imageInCarousel.focus();
     } else if (med.video) {
         const videoInCarousel = document.createElement("video");
         mediaElement = videoInCarousel;
         videoInCarousel.setAttribute("src", photographerMedias);
         videoInCarousel.setAttribute("class", "videoInCarousel");
-        videoInCarousel.setAttribute("controls", "true");
+        videoInCarousel.setAttribute("controls", "false");
     }
     carouselMediaContainer.appendChild(mediaElement);
 
