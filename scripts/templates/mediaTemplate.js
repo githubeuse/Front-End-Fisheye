@@ -174,6 +174,7 @@ function openLightBox(med) {
         imageInCarousel.setAttribute("src", photographerMedias);
         imageInCarousel.setAttribute("class", "imageInCarousel");
         imageInCarousel.setAttribute("alt", med.title);
+
         imageInCarousel.focus();
     } else if (med.video) {
         const videoInCarousel = document.createElement("video");

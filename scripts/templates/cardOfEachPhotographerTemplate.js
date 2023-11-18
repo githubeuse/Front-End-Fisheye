@@ -21,7 +21,7 @@ export function cardOfEachPhotographerTemplate(data) {
         //Ajout de l'image à la card 
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
-        img.setAttribute("alt", "");
+        img.setAttribute("alt", photographe.name);
         link.appendChild(img);
         
         //Ajout du nom à la card
