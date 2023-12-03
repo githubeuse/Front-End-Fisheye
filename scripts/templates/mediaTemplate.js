@@ -13,58 +13,28 @@ import {
 export function mediaTemplate(data) {
     const singleMedia = new MediaFactory(data, openLightBox);
     
-    const photographerMedias = singleMedia.image ? `assets/images/${singleMedia.image}` : `assets/images/${singleMedia.video}`;
+    const mediaElement = singleMedia.generateDOM(); // Appel de la méthode pour générer le DOM du média
 
     function getMediaCardDOM() {
         const article = document.createElement('article');
         article.setAttribute('class', 'article-media');
+        article.appendChild(mediaElement); // ajout de l'élément DOM généré par la mediaFactory
+
 
         const link = document.createElement("a");
-
-        function imgOrVideo(photographerMedias) {
-            if (singleMedia.image) {
-                const photographerImage = document.createElement('img');
-                photographerImage.setAttribute("src", photographerMedias);
-                photographerImage.setAttribute("class", "photographer-image");
-                photographerImage.setAttribute("alt", "Image de " + singleMedia.title);
-                photographerImage.setAttribute("tabindex", "0");
-                photographerImage.style.cursor = "pointer";
-                photographerImage.setAttribute("aria-label", singleMedia.title);
-                link.appendChild(photographerImage);
-
-                photographerImage.addEventListener("click", () => {
-                    singleMedia.openLightBox(data);
-                });
-
-                photographerImage.addEventListener("keyup", (event) => {
-                    if (event.key === "Enter") {
-                        singleMedia.openLightBox(data);
-                    }
-                });
-            } else if (singleMedia.video) {
-                const photographerVideo = document.createElement('video');
-                photographerVideo.setAttribute("src", photographerMedias);
-                photographerVideo.setAttribute("class", "photographer-video");
-                photographerVideo.setAttribute("aria-label", singleMedia.title);
-                photographerVideo.style.cursor = "pointer";
-                link.appendChild(photographerVideo);
-
-                photographerVideo.addEventListener("click", () => {
-                    singleMedia.openLightBox(data);
-                });
-
-                photographerVideo.addEventListener("keyup", (event) => {
-                    if (event.key === "Enter") {
-                        singleMedia.openLightBox(data);
-                    }
-                });
-            }
-        }
+        link.appendChild(mediaElement);
         article.appendChild(link);
-        imgOrVideo(photographerMedias);
 
 
+        mediaElement.addEventListener("click", () => {
+            singleMedia.openLightBox(data);
+        });
 
+        mediaElement.addEventListener("keyup", (event) => {
+                if (event.key === "Enter") {
+                    singleMedia.openLightBox(data);
+                }
+            });
 
         // Ligne basse de la card : avec le titre, l'icone coeur et le nombre de likes par image
         const bottomLine = document.createElement('div');

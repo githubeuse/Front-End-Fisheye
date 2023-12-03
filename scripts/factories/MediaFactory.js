@@ -48,6 +48,18 @@ class ImageMedia {
     get price() {
         return this._price;
     }
+    generateDOM() {
+        const photographerImage = document.createElement('img');
+        photographerImage.setAttribute("src", `assets/images/${this.image}`);
+        photographerImage.setAttribute("class", "photographer-image");
+        photographerImage.setAttribute("alt", "Image de " + this.title);
+        photographerImage.setAttribute("tabindex", "0");
+        photographerImage.style.cursor = "pointer";
+        photographerImage.setAttribute("aria-label", this.title);
+        
+        // Retourne l'élément DOM pour une image
+        return photographerImage;
+    }
 }
 
 class VideoMedia {
@@ -88,6 +100,15 @@ class VideoMedia {
 
     get price() {
         return this._price;
+    }
+    generateDOM() {
+        const photographerVideo = document.createElement('video');
+        photographerVideo.setAttribute("src", `assets/images/${this.video}`);
+        photographerVideo.setAttribute("class", "photographer-video");
+        photographerVideo.setAttribute("aria-label", this.title);
+        photographerVideo.style.cursor = "pointer";
+        // Retourne l'élément DOM pour une vidéo
+        return photographerVideo;
     }
 
 }
